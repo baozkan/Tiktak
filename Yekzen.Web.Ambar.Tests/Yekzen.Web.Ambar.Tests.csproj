@@ -95,6 +95,7 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ScopesController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
@@ -106,10 +107,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yekzen.Domain.Metadata\Yekzen.Domain.Metadata.csproj">
+      <Project>{62735391-0ab3-41c5-8757-17bc086a6eba}</Project>
+      <Name>Yekzen.Domain.Metadata</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yekzen.Web.Ambar\Yekzen.Web.Ambar.csproj">
       <Project>{7EC80181-F066-4887-961D-BC9CD88C08D5}</Project>
       <Name>Yekzen.Web.Ambar</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
