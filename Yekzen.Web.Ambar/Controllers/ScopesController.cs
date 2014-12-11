@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Yekzen.Data.Memory;
 using Yekzen.Domain.Metadata;
+using Yekzen.Core.Collections;
 
 namespace Yekzen.Web.Ambar.Controllers
 {
@@ -13,28 +15,34 @@ namespace Yekzen.Web.Ambar.Controllers
         // GET: api/Scopes
         public IEnumerable<Scope> Get()
         {
-            return new [] { new Scope{ Name = "Demo" } };
+            return MemoryContext.Default.GetSet<Scope>();
         }
 
         // GET: api/Scopes/5
         public Scope Get(string id)
         {
-            return new Scope { Name = "Demo" };
+            var scope = MemoryContext.Default.GetSet<Scope>().FirstOrDefault(p => p.Id == id);
+            return scope;
         }
 
         // POST: api/Scopes
         public void Post([FromBody]Scope value)
         {
+            MemoryContext.Default.GetSet<Scope>().Add(value);
         }
 
         // PUT: api/Scopes/5
         public void Put(string id, [FromBody]Scope value)
         {
+            var set = MemoryContext.Default.GetSet<Scope>();
+            set.Remove(p => p.Id == id);
+            set.Add(value);
         }
 
         // DELETE: api/Scopes/5
         public void Delete(string id)
         {
+            MemoryContext.Default.GetSet<Scope>().Remove(p => p.Id == id);
         }
     }
 }

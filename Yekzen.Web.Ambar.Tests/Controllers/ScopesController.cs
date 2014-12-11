@@ -18,39 +18,41 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         public void Get()
         {
             // Arrange
-            ScopesController controller = new ScopesController();
+            var controller = new ScopesController();
 
             // Act
             IEnumerable<Scope> result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
         }
 
         [TestMethod]
         public void GetById()
         {
             // Arrange
-            ScopesController controller = new ScopesController();
+            var controller = new ScopesController();
 
             // Act
             var result = controller.Get("5");
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.IsNull(result);
         }
 
         [TestMethod]
         public void Post()
         {
             // Arrange
-            ScopesController controller = new ScopesController();
+            var controller = new ScopesController();
 
             // Act
-            controller.Post(new Scope());
+            controller.Post(new Scope { Id = "5", Name="Foo" });
+
+            var result = controller.Get("5");
+
+            // Assert
+            Assert.IsNotNull(result);
 
             // Assert
         }
@@ -59,12 +61,19 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         public void Put()
         {
             // Arrange
-            ScopesController controller = new ScopesController();
+            var controller = new ScopesController();
 
+            controller.Post(new Scope { Id = "5", Name = "Foo" });
+            
             // Act
-            controller.Put("5", new Scope());
+            controller.Put("5", new Scope { Id = "5", Name = "Bar" });
+
+
+            var result = controller.Get("5");
 
             // Assert
+            Assert.AreEqual("Bar",result.Name);
+
         }
 
         [TestMethod]
