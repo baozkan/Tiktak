@@ -20,8 +20,12 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         [TestMethod]
         public void Get()
         {
+            var id = ShortGuid.NewGuid().Value;
+
             // Arrange
             var controller = new ScopesController();
+
+            controller.Post(new Scope { Id = id, Name = "Foo Scope" });
 
             // Act
             var result = controller.Get();

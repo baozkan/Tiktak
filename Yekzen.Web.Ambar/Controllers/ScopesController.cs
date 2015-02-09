@@ -13,9 +13,10 @@ namespace Yekzen.Web.Ambar.Controllers
     public class ScopesController : ApiController
     {
         // GET: api/Scopes
-        public IEnumerable<Scope> Get()
+        public Collection Get()
         {
-            return MemoryContext.Default.GetSet<Scope>();
+            var items = MemoryContext.Default.GetSet<Scope>();
+            return new Collection { Type = "Array", Items = items.ToList<Resource>(), Limit = 25, Skip = 0 };
         }
 
         // GET: api/Scopes/5

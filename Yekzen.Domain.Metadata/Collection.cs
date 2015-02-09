@@ -8,12 +8,12 @@ namespace Yekzen.Domain.Metadata
     /// <summary>
     /// Search results are represented as Lists.
     /// </summary>
-    public class List : Resource
+    public class Collection : Resource
     {
         /// <summary>
         /// Total number of resources matching the search parameters.
         /// </summary>
-        public int Total { get; set; }
+        public int Total { get { return Items.Count; } private set { } }
 
         /// <summary>
         /// Requested limit parameter.
@@ -28,6 +28,6 @@ namespace Yekzen.Domain.Metadata
         /// <summary>
         /// Array of objects.
         /// </summary>
-        public System.Collections.IEnumerable Items { get; set; }
+        public ICollection<Resource> Items { get; set; }
     }
 }
