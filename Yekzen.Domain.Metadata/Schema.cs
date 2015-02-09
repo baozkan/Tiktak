@@ -25,5 +25,10 @@ namespace Yekzen.Domain.Metadata
         /// ID of main Field used for display.
         /// </summary>
         public string DisplayField { get; set; }
+
+        /// <summary>
+        /// List of Fields.
+        /// </summary>
+        public Field[] Fields { get; set; }
     }
 }
