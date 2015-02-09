@@ -8,12 +8,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Yekzen.Web.Ambar;
 using Yekzen.Web.Ambar.Controllers;
 using Yekzen.Domain.Metadata;
+using Yekzen.Core;
 
 namespace Yekzen.Web.Ambar.Tests.Controllers
 {
     [TestClass]
     public class ScopesControllerTest
     {
+      
+
         [TestMethod]
         public void Get()
         {
@@ -21,7 +24,7 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
             var controller = new ScopesController();
 
             // Act
-            IEnumerable<Scope> result = controller.Get();
+            var result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
@@ -33,8 +36,9 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
             // Arrange
             var controller = new ScopesController();
 
+            var id = ShortGuid.NewGuid().Value;
             // Act
-            var result = controller.Get("5");
+            var result = controller.Get(id);
 
             // Assert
             Assert.IsNull(result);
@@ -43,13 +47,15 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         [TestMethod]
         public void Post()
         {
+            var id = ShortGuid.NewGuid().Value;
+
             // Arrange
             var controller = new ScopesController();
 
             // Act
-            controller.Post(new Scope { Id = "5", Name="Foo" });
+            controller.Post(new Scope { Id =  id, Name = "Foo Scope" });
 
-            var result = controller.Get("5");
+            var result = controller.Get(id);
 
             // Assert
             Assert.IsNotNull(result);
@@ -60,16 +66,17 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         [TestMethod]
         public void Put()
         {
+            var id = ShortGuid.NewGuid().Value;
             // Arrange
             var controller = new ScopesController();
 
-            controller.Post(new Scope { Id = "5", Name = "Foo" });
+            controller.Post(new Scope { Id = id, Name = "Foo" });
             
             // Act
-            controller.Put("5", new Scope { Id = "5", Name = "Bar" });
+            controller.Put(id, new Scope { Id = id, Name = "Bar" });
 
 
-            var result = controller.Get("5");
+            var result = controller.Get(id);
 
             // Assert
             Assert.AreEqual("Bar",result.Name);
@@ -79,11 +86,13 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         [TestMethod]
         public void Delete()
         {
+            var id = ShortGuid.NewGuid().Value;
+
             // Arrange
-            ScopesController controller = new ScopesController();
+            var controller = new ScopesController();
 
             // Act
-            controller.Delete("5");
+            controller.Delete(id);
 
             // Assert
         }
