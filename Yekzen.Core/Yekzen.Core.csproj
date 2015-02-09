@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Age.cs" />
+    <Compile Include="AppServices.cs" />
     <Compile Include="Collections\ICollectionExtensions.cs" />
     <Compile Include="Linq\Enumerable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
