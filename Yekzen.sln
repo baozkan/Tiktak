@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Core", "Yekzen.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Core.Test", "Yekzen.Core.Test\Yekzen.Core.Test.csproj", "{EC5C1D9C-637E-4B54-9378-B2D5D3930011}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Data", "Yekzen.Data\Yekzen.Data.csproj", "{852BA0A2-2A9A-4C03-835A-93761B141932}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{EC5C1D9C-637E-4B54-9378-B2D5D3930011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC5C1D9C-637E-4B54-9378-B2D5D3930011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC5C1D9C-637E-4B54-9378-B2D5D3930011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{852BA0A2-2A9A-4C03-835A-93761B141932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{852BA0A2-2A9A-4C03-835A-93761B141932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{852BA0A2-2A9A-4C03-835A-93761B141932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{852BA0A2-2A9A-4C03-835A-93761B141932}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +70,6 @@ Global
 		{D54372F5-45B0-4108-B63B-CA5932BC85BC} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
 		{B9D3555F-7659-47CD-A054-D396211E7E9D} = {C9A56BE8-0567-4335-98C0-95B5A707DDDD}
 		{EC5C1D9C-637E-4B54-9378-B2D5D3930011} = {C9A56BE8-0567-4335-98C0-95B5A707DDDD}
+		{852BA0A2-2A9A-4C03-835A-93761B141932} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
 	EndGlobalSection
 EndGlobal
