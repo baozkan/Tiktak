@@ -53,6 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FooService.cs" />
+    <Compile Include="IFooService.cs" />
+    <Compile Include="ServiceProviderTest.cs" />
     <Compile Include="ShortGuidTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
