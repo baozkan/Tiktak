@@ -61,7 +61,7 @@
     <Compile Include="DependencyInjection\IServiceScopeFactory.cs" />
     <Compile Include="DependencyInjection\LifecycleKind.cs" />
     <Compile Include="DependencyInjection\ServiceCollection.cs" />
-    <Compile Include="DependencyInjection\ServiceDescriber.cs" />
+    <Compile Include="DependencyInjection\IServiceCollectionExtensions.cs" />
     <Compile Include="DependencyInjection\ServiceDescriptor.cs" />
     <Compile Include="DependencyInjection\ServiceScope.cs" />
     <Compile Include="IConfiguration.cs" />

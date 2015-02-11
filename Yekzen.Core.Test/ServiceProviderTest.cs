@@ -11,7 +11,7 @@ namespace Yekzen.Core.Test
         public void GetServiceTest()
         {
             var serviceCollection = ServiceProvider.Current.GetService<IServiceCollection>();
-            serviceCollection.Add(new ServiceDescriptor(typeof(IFooService), typeof(FooService), LifecycleKind.Scoped));
+            serviceCollection.Scoped<IFooService, FooService>();
             var actual = ServiceProvider.Current.GetService<IFooService>();
         }
     }
