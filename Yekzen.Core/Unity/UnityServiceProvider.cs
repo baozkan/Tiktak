@@ -5,16 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Yekzen.Core.DependencyInjection;
 
-namespace Yekzen.Core
+namespace Yekzen.Core.Unity
 {
-    internal class UnityServiceProvider : IServiceProvider
+    internal class UnityServiceProvider : IServiceProvider, IDisposable
     {
-        private IUnityContainer container;
+        private readonly IUnityContainer container;
 
-        public UnityServiceProvider(IUnityContainer container)
+        public UnityServiceProvider(IServiceCollection serviceCollection = null)
         {
-            this.container = container;
+            this.container = new UnityContainer();
+            this.container.RegisterInstance<IServiceCollection>(new UnityServiceCollection(container, serviceCollection));      
         }
         
         /// <summary>
@@ -28,6 +30,11 @@ namespace Yekzen.Core
         public object GetService(Type serviceType)
         {
             return this.container.Resolve(serviceType);
+        }
+
+        public void Dispose()
+        {
+            this.container.Dispose();
         }
     }
 }

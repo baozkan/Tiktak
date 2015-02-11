@@ -8,11 +8,11 @@ namespace Yekzen.Core.DependencyInjection
 {
     internal class ServiceScope : IServiceScope
     {
-        private readonly ServiceProvider scopedProvider;
+        private readonly IServiceProvider scopedProvider;
 
-        public ServiceScope(ServiceProvider scopedProvider)
+        public ServiceScope(IServiceProvider scopedProvider)
         {
-            scopedProvider = scopedProvider;
+            this.scopedProvider = scopedProvider;
         }
 
         public IServiceProvider ServiceProvider
@@ -22,7 +22,8 @@ namespace Yekzen.Core.DependencyInjection
 
         public void Dispose()
         {
-            scopedProvider.Dispose();
+            if(scopedProvider is IDisposable)
+                ((IDisposable)scopedProvider).Dispose();
         }
     }
 }

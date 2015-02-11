@@ -6,32 +6,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Yekzen.Core.DependencyInjection;
+using Yekzen.Core.Unity;
 
 namespace Yekzen.Core
 {
-    public class ServiceProvider : IServiceProvider
+    public class ServiceProvider : IServiceProvider, IDisposable
     {
-        private static readonly Lazy<ServiceProvider> instance = new Lazy<ServiceProvider>(() => new ServiceProvider());  
+        private static readonly Lazy<ServiceProvider> instance = new Lazy<ServiceProvider>(() => new ServiceProvider());
 
-        private readonly IServiceScope serviceScope;
+        private readonly IServiceProvider serviceProvider;
 
         public static ServiceProvider Current { get { return instance.Value; } }
 
-        private ServiceProvider(IConfiguration configuration = null)
+        private ServiceProvider(IServiceCollection serviceCollection = null)
         {
-            this.serviceScope = serviceScope;
-            ServiceLocator.SetLocatorProvider(() => (IServiceLocator)serviceScope);
+            serviceCollection = serviceCollection ?? new ServiceCollection();
+            this.serviceProvider = new UnityServiceProvider(serviceCollection);
         }
 
         public object GetService(Type serviceType)
         {
-            return this.serviceScope.GetService(serviceType);
+            return this.serviceProvider.GetService(serviceType);
         }
 
-        public static IServiceProvider Initialize()
+        public void Dispose()
         {
-            var container = new UnityContainer();
-            return new UnityServiceProvider(container);
-        }            
+            ((UnityServiceProvider)this.serviceProvider)
+                .Dispose();
+        }
     }
 }

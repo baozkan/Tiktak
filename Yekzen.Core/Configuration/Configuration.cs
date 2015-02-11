@@ -10,7 +10,7 @@ namespace Yekzen.Core.Configuration
     {
         public string Get(string name)
         {
-            return System.Configuration.ConfigurationSettings.AppSettings[name];
+            return System.Configuration.ConfigurationManager.AppSettings[name];
         }
     }
 }

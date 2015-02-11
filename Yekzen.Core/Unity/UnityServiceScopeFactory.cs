@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.Unity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,9 @@ namespace Yekzen.Core.Unity
     {
         public IServiceScope CreateScope()
         {
-            return new 
+            
+            var serviceScope = new ServiceScope(new UnityServiceProvider());
+            return serviceScope;
         }
     }
 }
