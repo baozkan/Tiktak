@@ -63,7 +63,6 @@
     <Compile Include="DependencyInjection\ServiceCollection.cs" />
     <Compile Include="DependencyInjection\IServiceCollectionExtensions.cs" />
     <Compile Include="DependencyInjection\ServiceDescriptor.cs" />
-    <Compile Include="DependencyInjection\ServiceScope.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IServiceProviderExtensions.cs" />
     <Compile Include="NotNullAttribute.cs" />
@@ -78,8 +77,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShortGuid.cs" />
     <Compile Include="Unity\IUnityContainerExtensions.cs" />
+    <Compile Include="Unity\UnityRegisteration.cs" />
     <Compile Include="Unity\UnityServiceCollection.cs" />
     <Compile Include="Unity\UnityServiceProvider.cs" />
+    <Compile Include="Unity\UnityServiceScope.cs" />
     <Compile Include="Unity\UnityServiceScopeFactory.cs" />
   </ItemGroup>
   <ItemGroup>

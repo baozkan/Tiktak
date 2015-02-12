@@ -8,5 +8,6 @@ namespace Yekzen.Core.Test
 {
     public interface IFooService
     {
+        int Value { get; set; }
     }
 }

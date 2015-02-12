@@ -24,8 +24,6 @@ namespace Yekzen.Core.Unity
             }
         }
 
-        
-
         IServiceCollection IServiceCollection.Add(IServiceDescriptor descriptor)
         {
             this.container.Register(descriptor);

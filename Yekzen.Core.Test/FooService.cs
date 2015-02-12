@@ -8,5 +8,6 @@ namespace Yekzen.Core.Test
 {
     public class FooService : IFooService
     {
+        public int Value { get; set; }
     }
 }

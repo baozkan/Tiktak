@@ -10,11 +10,16 @@ namespace Yekzen.Core.Unity
 {
     public class UnityServiceScopeFactory : IServiceScopeFactory
     {
+        private readonly IUnityContainer container;
+        public UnityServiceScopeFactory(IUnityContainer container)
+        {
+            this.container = container;
+        }
+
         public IServiceScope CreateScope()
         {
-            
-            var serviceScope = new ServiceScope(new UnityServiceProvider());
-            return serviceScope;
+            var container = this.container.CreateChildContainer();
+            return new UnityServiceScope(container);
         }
     }
 }

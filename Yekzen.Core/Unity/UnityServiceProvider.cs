@@ -9,16 +9,15 @@ using Yekzen.Core.DependencyInjection;
 
 namespace Yekzen.Core.Unity
 {
-    internal class UnityServiceProvider : IServiceProvider, IDisposable
+    public class UnityServiceProvider : IServiceProvider, IDisposable
     {
         private readonly IUnityContainer container;
 
-        public UnityServiceProvider(IServiceCollection serviceCollection = null)
+        public UnityServiceProvider(IUnityContainer container)
         {
-            this.container = new UnityContainer();
-            this.container.RegisterInstance<IServiceCollection>(new UnityServiceCollection(container, serviceCollection));      
+            this.container = container;
         }
-        
+
         /// <summary>
         /// Gets the service object of the specified type.
         /// </summary>

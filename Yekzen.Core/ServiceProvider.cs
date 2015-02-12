@@ -21,7 +21,9 @@ namespace Yekzen.Core
         private ServiceProvider(IServiceCollection serviceCollection = null)
         {
             serviceCollection = serviceCollection ?? new ServiceCollection();
-            this.serviceProvider = new UnityServiceProvider(serviceCollection);
+            var unityContainer = new UnityContainer();
+            UnityRegisteration.Populate(unityContainer, serviceCollection);
+            this.serviceProvider = unityContainer.Resolve<IServiceProvider>();
         }
 
         public object GetService(Type serviceType)

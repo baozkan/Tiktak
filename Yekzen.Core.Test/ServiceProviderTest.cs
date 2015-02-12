@@ -14,5 +14,7 @@ namespace Yekzen.Core.Test
             serviceCollection.Scoped<IFooService, FooService>();
             var actual = ServiceProvider.Current.GetService<IFooService>();
         }
+
+        
     }
 }
