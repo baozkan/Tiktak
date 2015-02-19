@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.ServiceLocation;
+﻿using Autofac;
+using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,13 @@ namespace Yekzen.Core
         private ServiceProvider(IServiceCollection serviceCollection = null)
         {
             serviceCollection = serviceCollection ?? new ServiceCollection();
-            var unityContainer = new UnityContainer();
-            UnityRegisteration.Populate(unityContainer, serviceCollection);
-            this.serviceProvider = unityContainer.Resolve<IServiceProvider>();
+            //var unityContainer = new UnityContainer();
+            //UnityRegisteration.Populate(unityContainer, serviceCollection);
+            //this.serviceProvider = unityContainer.Resolve<IServiceProvider>();
+
+            var builder = new ContainerBuilder();
+            Autofac.AutofacRegistration.Populate(builder,serviceCollection);
+            this.serviceProvider = builder.Build().Resolve<IServiceProvider>();
         }
 
         public object GetService(Type serviceType)

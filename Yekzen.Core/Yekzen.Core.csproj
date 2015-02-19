@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -53,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Age.cs" />
+    <Compile Include="Autofac\AutofacRegistration.cs" />
+    <Compile Include="Autofac\AutofacServiceCollection.cs" />
+    <Compile Include="Autofac\AutofacServiceProvider.cs" />
+    <Compile Include="Autofac\AutofacServiceScope.cs" />
+    <Compile Include="Autofac\AutofacServiceScopeFactory.cs" />
+    <Compile Include="Autofac\ContainerBuilderExtensions.cs" />
     <Compile Include="Configuration\Configuration.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="DependencyInjection\IServiceCollection.cs" />
