@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Yekzen.Data
 {
-    public interface IRepository<TEntity> where TEntity : new()
+    public interface IRepository<TEntity> where TEntity : class
     {
         /// <summary>
         /// 
