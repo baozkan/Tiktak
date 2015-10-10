@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FE7D9B4B-670A-4B6A-9771-E75D077BE5BE}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Data.RavenDb.Test", "Yekzen.Data.RavenDb.Test\Yekzen.Data.RavenDb.Test.csproj", "{C62D5009-50FC-4EB9-BD37-9A61424F2F07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Security", "Yekzen.Security\Yekzen.Security.csproj", "{DB14430E-62D7-4583-ABC5-A1C60E85F18F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Web.Bootstrap", "Yekzen.Web.Bootstrap\Yekzen.Web.Bootstrap.csproj", "{92DB3DD3-C100-41AB-B019-0078B4F67CC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{DB14430E-62D7-4583-ABC5-A1C60E85F18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB14430E-62D7-4583-ABC5-A1C60E85F18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB14430E-62D7-4583-ABC5-A1C60E85F18F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92DB3DD3-C100-41AB-B019-0078B4F67CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92DB3DD3-C100-41AB-B019-0078B4F67CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92DB3DD3-C100-41AB-B019-0078B4F67CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92DB3DD3-C100-41AB-B019-0078B4F67CC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{431A566F-EAF2-4149-9B95-1323ADC489B0} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
 		{C62D5009-50FC-4EB9-BD37-9A61424F2F07} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
 		{DB14430E-62D7-4583-ABC5-A1C60E85F18F} = {C9A56BE8-0567-4335-98C0-95B5A707DDDD}
+		{92DB3DD3-C100-41AB-B019-0078B4F67CC2} = {5CAB9D69-81CE-4563-8EE3-923768DEA45E}
 	EndGlobalSection
 EndGlobal
