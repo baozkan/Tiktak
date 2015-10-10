@@ -11,7 +11,7 @@ namespace Yekzen.Core.Test
         public void GetServiceTest()
         {
             var serviceCollection = ServiceProvider.Current.GetService<IServiceCollection>();
-            serviceCollection.Scoped<IFooService, FooService>();
+            serviceCollection.Scoped<FooService, IFooService>();
             var actual = ServiceProvider.Current.GetService<IFooService>();
         }
 

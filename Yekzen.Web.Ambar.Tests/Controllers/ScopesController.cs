@@ -52,7 +52,6 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         public void Post()
         {
             var id = ShortGuid.NewGuid().Value;
-
             // Arrange
             var controller = new ScopesController();
 

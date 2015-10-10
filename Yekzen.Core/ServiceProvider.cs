@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Yekzen.Core.DependencyInjection;
 using Yekzen.Core.Unity;
+using Yekzen.Core.Autofac;
 
 namespace Yekzen.Core
 {
@@ -21,12 +22,12 @@ namespace Yekzen.Core
 
         private ServiceProvider(IServiceCollection serviceCollection = null)
         {
-            serviceCollection = serviceCollection ?? new ServiceCollection();
             //var unityContainer = new UnityContainer();
             //UnityRegisteration.Populate(unityContainer, serviceCollection);
             //this.serviceProvider = unityContainer.Resolve<IServiceProvider>();
 
             var builder = new ContainerBuilder();
+            serviceCollection = serviceCollection ?? new AutofacServiceCollection(builder,serviceCollection);            
             Autofac.AutofacRegistration.Populate(builder,serviceCollection);
             this.serviceProvider = builder.Build().Resolve<IServiceProvider>();
         }
