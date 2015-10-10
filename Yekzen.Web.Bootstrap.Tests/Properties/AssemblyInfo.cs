@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Yekzen.Web.Bootstrap")]
+[assembly: AssemblyTitle("Yekzen.Web.Bootstrap.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Yekzen.Web.Bootstrap")]
+[assembly: AssemblyProduct("Yekzen.Web.Bootstrap.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bfa514bb-c73c-49c0-b777-806b66379035")]
+[assembly: Guid("335ace67-e02f-4cfa-91ce-57029b445794")]
 
 // Version information for an assembly consists of the following four values:
 //
