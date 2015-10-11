@@ -35,30 +35,27 @@
 
 @section scripts
 {
+    <script id="form_input" type="x-tmpl-mustache">
+        <form>
+            <% $.each(Fields.Items.Items, function (index, item) {
+                if(item.Fields.InputType == 'submit') {%>
+            <button type="<%=item.Fields.InputType%>" class="btn btn-default"><%=item.Fields.Title%></button>
+            <% } else {%>
+            <div class="form-group">
+                <label for="input<%=item.Fields.InputType%>"><%=item.Fields.Title%></label>
+                <input type="<%=item.Fields.InputType%>" class="form-control" id="input<%=item.Fields.InputType%>" placeholder="<%=item.Fields.InputType%>">
+            </div>
+            <% } }); %>
+        </form>
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $.getJSON("/Home/Data", null, function (data) {
 
                 $('.main-data').html(JSON.stringify(data));
-
-                
-                var $form = $('<form/>');
-
-                $.each(data.Fields.Items.Items, function (index, item) {
-                    console.log("text", item.Fields.InputType);
-                    if(item.Fields.InputType == 'submit')
-                    {
-                        $form.append('<button type="submit" class="btn btn-default">' + item.Fields.Title + '</button>');
-                    }else 
-                    {
-                        $form.append('<div class="form-group"><label for="formitem' + item.Fields.Title + '">' + item.Fields.Title + '</label><input type="' + item.Fields.InputType + '" class="form-control" id="formitem' + item.Fields.Title + '" placeholder="' + item.Fields.InputType + '"></div>');
-                    }
-
-
-                });
-
-                $('.main-content').append($form);
-
+                var template = _.template($('#form_input').html());
+                $('.main-content').append(template(data));
             });
         });
     </script>

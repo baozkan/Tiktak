@@ -16,7 +16,9 @@ namespace Yekzen.Web.Ambar.Controllers
         public Collection Get()
         {
             var items = MemoryContext.Default.GetSet<Scope>();
-            return new Collection { Type = "Array", Items = items.ToList<Resource>(), Limit = 25, Skip = 0 };
+            var collection = new Collection { Type = "Array",  Limit = 25, Skip = 0 };
+            collection.Items.AddRange(items);
+            return collection;
         }
 
         // GET: api/Scopes/5

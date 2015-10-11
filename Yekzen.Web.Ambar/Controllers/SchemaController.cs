@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Yekzen.Data.Memory;
 using Yekzen.Domain.Metadata;
+using Yekzen.Core.Collections;
 
 namespace Yekzen.Web.Ambar.Controllers
 {
@@ -15,8 +16,9 @@ namespace Yekzen.Web.Ambar.Controllers
         public Collection Get(string scope)
         {
             var items = MemoryContext.Default.GetSet<Schema>();
-
-            return new Collection { Type = "Array", Items = items.ToList<Resource>(), Limit = 25, Skip = 0 };
+            var collection = new Collection { Type = "Array", Limit = 25, Skip = 0 };
+            collection.Items.AddRange(items);
+            return collection;
         }
 
         // GET: api/Schema/5
