@@ -29,6 +29,14 @@ namespace Yekzen.Domain.Metadata
         /// <summary>
         /// List of Fields.
         /// </summary>
-        public Field[] Fields { get; set; }
+        public ICollection<Field> Fields { get; private set; }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public Schema()
+        {
+            this.Fields = new HashSet<Field>();
+        }
     }
 }

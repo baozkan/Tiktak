@@ -28,6 +28,14 @@ namespace Yekzen.Domain.Metadata
         /// <summary>
         /// Array of objects.
         /// </summary>
-        public ICollection<Resource> Items { get; set; }
+        public ICollection<Resource> Items { get; private set; }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public Collection()
+        {
+            this.Items = new HashSet<Resource>();
+        }
     }
 }

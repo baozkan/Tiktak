@@ -1,0 +1,61 @@
+﻿{
+    "Fields": {
+        "Items": {
+            "Total": 3,
+            "Limit": 0,
+            "Skip": 0,
+            "Items": [
+                {
+                    "Fields": { "Title": "Email address", "InputType": "email" },
+                    "Type": "Entry",
+                    "Id": "Email",
+                    "Scope": { "Type": "Link", "LinkType": "Scope", "Id": "web-scope" },
+                    "ContentType": { "Type": "Link", "LinkType": "Schema", "Id": "form-item-type" },
+                    "Version": 0,
+                    "CreatedAt": "/Date(-62135596800000)/",
+                    "UpdatedAt": "/Date(-62135596800000)/"
+                },
+                {
+                    "Fields": {
+                        "Title": "Password",
+                        "InputType": "password"
+                    },
+                    "Type": "Entry",
+                    "Id": "Password",
+                    "Scope": { "Type": "Link", "LinkType": "Scope", "Id": "web-scope" },
+                    "ContentType": { "Type": "Link", "LinkType": "Schema", "Id": "form-item-type" },
+                    "Version": 0,
+                    "CreatedAt": "/Date(-62135596800000)/",
+                    "UpdatedAt": "/Date(-62135596800000)/"
+                },
+                {
+                    "Fields": {
+                        "Title": "Submit",
+                        "InputType": "submit"
+                    },
+                    "Type": "Entry",
+                    "Id": "Submit",
+                    "Scope": { "Type": "Link", "LinkType": "Scope", "Id": "web-scope" },
+                    "ContentType": { "Type": "Link", "LinkType": "Schema", "Id": "form-item-type" },
+                    "Version": 0,
+                    "CreatedAt": "/Date(-62135596800000)/",
+                    "UpdatedAt": "/Date(-62135596800000)/"
+                }
+            ],
+            "Type": "Collection",
+            "Id": "Items",
+            "Scope": { "Type": "Link", "LinkType": "Scope", "Id": "web-scope" },
+            "ContentType": { "Type": "Link", "LinkType": "Schema", "Id": "form-item-type" },
+            "Version": 0,
+            "CreatedAt": "/Date(-62135596800000)/",
+            "UpdatedAt": "/Date(-62135596800000)/"
+        }
+    },
+    "Type": "Entry",
+    "Id": "form-entry",
+    "Scope": { "Type": "Link", "LinkType": "Scope", "Id": "web-scope" },
+    "ContentType": { "Type": "Link", "LinkType": "Schema", "Id": "form-type" },
+    "Version": 0,
+    "CreatedAt": "/Date(-62135596800000)/",
+    "UpdatedAt": "/Date(-62135596800000)/"
+}

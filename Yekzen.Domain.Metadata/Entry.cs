@@ -12,13 +12,16 @@ namespace Yekzen.Domain.Metadata
     public class Entry : Resource
     {
         /// <summary>
-        /// Link to the Entry's Schema.
-        /// </summary>
-        public Link ContentType { get; set; }
-
-        /// <summary>
         /// Properties according to Schema.
         /// </summary>
-        public IDictionary<string,object> Fields { get; set; }
+        public IDictionary<string,object> Fields { get; private set; }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public Entry()
+        {
+            this.Fields = new Dictionary<string, object>();
+        }
     }
 }
