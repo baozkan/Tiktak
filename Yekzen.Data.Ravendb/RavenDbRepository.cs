@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Yekzen.Core;
 
 namespace Yekzen.Data.RavenDb
 {
@@ -11,9 +12,10 @@ namespace Yekzen.Data.RavenDb
     {
         public IDocumentSession Session { get; set; }
 
-        public RavenDbRepository(IDocumentSession session)
+        public RavenDbRepository(IUnitOfWork context)
         {
-            this.Session = session;
+            var ravenDbContext = context as RavenDbContext;
+            this.Session = ravenDbContext.Session;
         }
 
         public TEntity Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
@@ -23,6 +25,11 @@ namespace Yekzen.Data.RavenDb
         }
 
         public ICollection<TEntity> Query(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        {
+            return Session.Query<TEntity>().Where(predicate).ToHashSet();
+        }
+
+        public ICollection<TEntity> All()
         {
             return Session.Query<TEntity>().ToHashSet();
         }

@@ -13,14 +13,15 @@ namespace Yekzen.Data.RavenDb.Test
             var store = new EmbeddableDocumentStore();
             store.Initialize();
 
-            var session = store.OpenSession();
-            var target = new RavenDbRepository<Foo>(session);
-            target.Create(new Foo { Bar = "Foo" });
-            session.SaveChanges();
+            using (var context = new RavenDbContext(store))
+            {
+                var target = new RavenDbRepository<Foo>(context);
+                target.Create(new Foo { Bar = "Foo" });
 
-            var actual = target.Find(foo => foo.Bar == "Foo");
+                var actual = target.Find(foo => foo.Bar == "Foo");
 
-            Assert.IsNotNull(actual);
+                Assert.IsNotNull(actual);
+            }
         }
     }
 }

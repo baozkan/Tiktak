@@ -37,8 +37,7 @@ namespace Yekzen.Core.Autofac
             {
                 var registration = RegistrationBuilder.ForDelegate(descriptor.ServiceType, (context, parameters) =>
                 {
-                    var serviceProvider = context.Resolve<IServiceProvider>();
-                    return descriptor.ImplementationFactory(serviceProvider);
+                    return descriptor.ImplementationFactory(ServiceProvider.Current);
                 })
                 .ConfigureLifecycle(descriptor.Lifecycle)
                 .CreateRegistration();

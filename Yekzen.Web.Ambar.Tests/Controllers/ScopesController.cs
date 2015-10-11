@@ -20,18 +20,21 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
         [TestMethod]
         public void Get()
         {
+            //Register dependency injection.
+            Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
+            
             var id = ShortGuid.NewGuid().Value;
 
             // Arrange
             var controller = new ScopesController();
-
+            
             controller.Post(new Scope { Id = id, Name = "Foo Scope" });
 
             // Act
             var result = controller.Get();
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Items.Count > 0);
         }
 
         [TestMethod]

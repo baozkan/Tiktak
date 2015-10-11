@@ -28,5 +28,18 @@ namespace Yekzen.Core.Test
 
             Assert.IsNotNull(actual);
         }
+
+        [TestMethod]
+        public void GetInstanceTest()
+        {
+            var serviceCollection = new ServiceCollection();
+            var expected = new FooService();
+            expected.Value = 4;
+            serviceCollection.Scoped<IFooService>(provider => expected);
+            serviceCollection.Update();
+            var actual = ServiceProvider.Current.GetService<IFooService>();
+
+            Assert.AreEqual(expected.Value, actual.Value);
+        }
     }
 }

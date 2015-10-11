@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yekzen.Core\Yekzen.Core.csproj">
+      <Project>{b9d3555f-7659-47cd-a054-d396211e7e9d}</Project>
+      <Name>Yekzen.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yekzen.Data\Yekzen.Data.csproj">
       <Project>{852ba0a2-2a9a-4c03-835a-93761b141932}</Project>
       <Name>Yekzen.Data</Name>

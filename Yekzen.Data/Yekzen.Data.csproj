@@ -43,15 +43,23 @@
     <Compile Include="IRepositoryFactory.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScopeRepositoryExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yekzen.Core\Yekzen.Core.csproj">
       <Project>{b9d3555f-7659-47cd-a054-d396211e7e9d}</Project>
       <Name>Yekzen.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yekzen.Domain.Metadata\Yekzen.Domain.Metadata.csproj">
+      <Project>{62735391-0ab3-41c5-8757-17bc086a6eba}</Project>
+      <Name>Yekzen.Domain.Metadata</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

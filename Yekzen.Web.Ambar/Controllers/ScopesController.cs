@@ -7,15 +7,23 @@ using System.Web.Http;
 using Yekzen.Data.Memory;
 using Yekzen.Domain.Metadata;
 using Yekzen.Core.Collections;
+using Yekzen.Data;
+using Yekzen.Core;
 
 namespace Yekzen.Web.Ambar.Controllers
 {
     public class ScopesController : ApiController
     {
+        private readonly IRepository<Scope> repository;
+
+        public ScopesController()
+        {
+            repository = ServiceProvider.Current.GetService<IRepository<Scope>>();
+        }
         // GET: api/Scopes
         public Collection Get()
         {
-            var items = MemoryContext.Default.GetSet<Scope>();
+            var items = repository.All();
             var collection = new Collection { Type = "Array",  Limit = 25, Skip = 0 };
             collection.Items.AddRange(items);
             return collection;
@@ -31,7 +39,7 @@ namespace Yekzen.Web.Ambar.Controllers
         // POST: api/Scopes
         public void Post([FromBody]Scope value)
         {
-            MemoryContext.Default.GetSet<Scope>().Add(value);
+            repository.Create(value);
         }
 
         // PUT: api/Scopes/5

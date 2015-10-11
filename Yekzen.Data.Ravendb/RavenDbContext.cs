@@ -9,21 +9,21 @@ namespace Yekzen.Data.RavenDb
 {
     public class RavenDbContext : IUnitOfWork
     {
-        private readonly IDocumentSession session;
+        public IDocumentSession Session { get; private set; }
 
         public RavenDbContext(IDocumentStore store)
         {
-            this.session = store.OpenSession();
+            this.Session = store.OpenSession();
         }
 
         public void SaveChanges()
         {
-            this.session.SaveChanges();
+            this.Session.SaveChanges();
         }
 
         public void Dispose()
         {
-            this.session.Dispose();
+            this.Session.Dispose();
         }
     }
 }

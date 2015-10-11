@@ -19,6 +19,10 @@ namespace Yekzen.Web.Ambar
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //Register dependency injection.
+            //Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
+
         }
     }
 }

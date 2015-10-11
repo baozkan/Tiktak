@@ -26,6 +26,12 @@ namespace Yekzen.Data
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        ICollection<TEntity> All();
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="entity"></param>
         void Create(TEntity entity);
         
