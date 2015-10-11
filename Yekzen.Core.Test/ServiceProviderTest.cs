@@ -10,11 +10,23 @@ namespace Yekzen.Core.Test
         [TestMethod]
         public void GetServiceTest()
         {
-            var serviceCollection = ServiceProvider.Current.GetService<IServiceCollection>();
-            serviceCollection.Scoped<FooService, IFooService>();
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.Scoped<IFooService, FooService>();
+            serviceCollection.Update();
             var actual = ServiceProvider.Current.GetService<IFooService>();
+
+            Assert.IsNotNull(actual);
         }
 
-        
+        [TestMethod]
+        public void GetGenericServiceTest()
+        {
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.Scoped(typeof(IGenericFooService<>), typeof(GenericFooService<>));
+            serviceCollection.Update();
+            var actual = ServiceProvider.Current.GetService<IGenericFooService<int>>();
+
+            Assert.IsNotNull(actual);
+        }
     }
 }

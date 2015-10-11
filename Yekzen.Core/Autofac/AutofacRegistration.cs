@@ -7,15 +7,12 @@ namespace Yekzen.Core.Autofac
 {
     public static class AutofacRegistration
     {
-        public static void Populate(
-                this ContainerBuilder builder,
-                IServiceCollection descriptors)
+        public static IServiceProvider Populate(IServiceCollection descriptors)
         {
-            builder.RegisterType<AutofacServiceProvider>().As<IServiceProvider>();
+            var builder = new ContainerBuilder();
             builder.RegisterType<AutofacServiceScopeFactory>().As<IServiceScopeFactory>();
-            builder.RegisterInstance<IServiceCollection>(new AutofacServiceCollection(builder,descriptors));
-
             Register(builder, descriptors);
+            return new AutofacServiceProvider(builder.Build());
         }
 
         private static void Register(
@@ -26,6 +23,13 @@ namespace Yekzen.Core.Autofac
             {
                 builder.Register(descriptor);
             }
+        }
+
+        public static void Update(IServiceCollection descriptors)
+        {
+            var builder = new ContainerBuilder();
+            Register(builder, descriptors);
+            builder.Update(ServiceProvider.Current.GetService<IContainer>());
         }
 
         

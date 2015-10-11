@@ -64,7 +64,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="FooService.cs" />
+    <Compile Include="GenericFooService.cs" />
     <Compile Include="IFooService.cs" />
+    <Compile Include="IGenericFooService.cs" />
     <Compile Include="ServiceProviderTest.cs" />
     <Compile Include="ShortGuidTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

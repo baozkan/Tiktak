@@ -26,10 +26,8 @@ namespace Yekzen.Core
             //UnityRegisteration.Populate(unityContainer, serviceCollection);
             //this.serviceProvider = unityContainer.Resolve<IServiceProvider>();
 
-            var builder = new ContainerBuilder();
-            serviceCollection = serviceCollection ?? new AutofacServiceCollection(builder,serviceCollection);            
-            Autofac.AutofacRegistration.Populate(builder,serviceCollection);
-            this.serviceProvider = builder.Build().Resolve<IServiceProvider>();
+            serviceCollection = serviceCollection ?? new AutofacServiceCollection(serviceCollection);
+            this.serviceProvider = Autofac.AutofacRegistration.Populate(serviceCollection); ;
         }
 
         public object GetService(Type serviceType)
@@ -39,7 +37,7 @@ namespace Yekzen.Core
 
         public void Dispose()
         {
-            ((UnityServiceProvider)this.serviceProvider)
+            ((IContainer)this.serviceProvider)
                 .Dispose();
         }
     }

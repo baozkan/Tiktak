@@ -9,16 +9,18 @@ namespace Yekzen.Core.Autofac
 {
     internal class AutofacServiceProvider : IServiceProvider
     {
-        private readonly IComponentContext _componentContext;
+        private readonly IContainer container;
 
-        public AutofacServiceProvider(IComponentContext componentContext)
+        public AutofacServiceProvider(IContainer container)
         {
-            _componentContext = componentContext;
+            this.container = container;
         }
 
         public object GetService(Type serviceType)
         {
-            return _componentContext.ResolveOptional(serviceType);
+            if (serviceType == typeof(IContainer))
+                return container;
+            return container.Resolve(serviceType);
         }
     }
 }

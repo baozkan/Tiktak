@@ -11,22 +11,14 @@ namespace Yekzen.Core.Autofac
     public class AutofacServiceCollection : IServiceCollection
     {
         private readonly IServiceCollection collection;
-        private readonly ContainerBuilder container;
 
-        public AutofacServiceCollection(ContainerBuilder container, IServiceCollection collection = null)
+        public AutofacServiceCollection(IServiceCollection collection = null)
         {
-
             this.collection = collection ?? new ServiceCollection();
-            this.container = container;
-            foreach (var serviceDescriptor in this.collection)
-            {
-                this.container.Register(serviceDescriptor);
-            }
         }
 
         IServiceCollection IServiceCollection.Add(IServiceDescriptor descriptor)
         {
-            this.container.Register(descriptor);
             return collection.Add(descriptor);
         }
 

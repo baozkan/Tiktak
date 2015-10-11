@@ -108,5 +108,10 @@ namespace Yekzen.Core.DependencyInjection
             var descriptor = new ServiceDescriptor(serviceType, implementationFactory, lifecycle);
             collection.Add(descriptor);
         }
+
+        public static void Update(this IServiceCollection collection)
+        {
+            Yekzen.Core.Autofac.AutofacRegistration.Update(new Autofac.AutofacServiceCollection(collection));
+        }
     }
 }
