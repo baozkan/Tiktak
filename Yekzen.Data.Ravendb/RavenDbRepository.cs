@@ -37,6 +37,7 @@ namespace Yekzen.Data.RavenDb
         public void Create(TEntity entity)
         {
             Session.Store(entity);
+            Session.SaveChanges();
         }
 
         public void Update(TEntity entity)

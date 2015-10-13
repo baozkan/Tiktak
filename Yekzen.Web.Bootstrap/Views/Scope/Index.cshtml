@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 main-content">
+    </div>
+</div>
+
+@section scripts
+{
+    <script id="form_input" type="x-tmpl-mustache">
+        <form>
+            <% $.each(Fields.Items.Items, function (index, item) {
+            if(item.Fields.InputType == 'submit') {%>
+            <button type="<%=item.Fields.InputType%>" class="btn btn-default"><%=item.Fields.Title%></button>
+            <% } else {%>
+            <div class="form-group">
+                <label for="input<%=item.Fields.InputType%>"><%=item.Fields.Title%></label>
+                <input type="<%=item.Fields.InputType%>" name="<%=item.Fields.InputType%>" class="form-control" id="input<%=item.Fields.InputType%>" placeholder="<%=item.Fields.InputType%>">
+            </div>
+            <% } }); %>
+        </form>
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.getJSON("/Scope/Data", null, function (data) {
+                var template = _.template($('#form_input').html());
+                $('.main-content').append(template(data));
+
+                $('form').submit(function (e)
+                {
+                    e.preventDefault = false;
+                    console.log("text", $(this).serialize());
+                    //console.log("data", $(this).parent().serializeArray());
+                    return false;
+                });
+            });
+        });
+    </script>
+}

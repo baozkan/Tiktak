@@ -55,5 +55,12 @@ namespace Yekzen.Web.Ambar.Controllers
         {
             MemoryContext.Default.GetSet<Scope>().Remove(p => p.Id == id);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            var unitOfWork = ServiceProvider.Current.GetService<IUnitOfWork>();
+            unitOfWork.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

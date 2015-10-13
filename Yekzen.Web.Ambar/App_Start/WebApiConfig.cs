@@ -21,7 +21,7 @@ namespace Yekzen.Web.Ambar
             );
 
             //Register dependency injection.
-            //Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
+            Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
 
         }
     }
