@@ -37,6 +37,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Web.Bootstrap", "Yek
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Web.Bootstrap.Tests", "Yekzen.Web.Bootstrap.Tests\Yekzen.Web.Bootstrap.Tests.csproj", "{BA37942F-9CF4-4417-AA11-A34B00D0CCB0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceModel", "ServiceModel", "{D46220B0-3166-4AD3-8ABA-E7CA079B70AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.ServiceModel.Abstractions", "Yekzen.ServiceModel.Abstractions\Yekzen.ServiceModel.Abstractions.csproj", "{AA890CFE-EA6A-4CFD-AF68-D6D90D09ACAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.ServiceModel", "Yekzen.ServiceModel\Yekzen.ServiceModel.csproj", "{82E8446F-245E-4687-8DC1-D2A84166EC19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.ServiceModel.Tests", "Yekzen.ServiceModel.Tests\Yekzen.ServiceModel.Tests.csproj", "{927B6357-2979-48E2-B590-97F9D156E736}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +103,18 @@ Global
 		{BA37942F-9CF4-4417-AA11-A34B00D0CCB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA37942F-9CF4-4417-AA11-A34B00D0CCB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA37942F-9CF4-4417-AA11-A34B00D0CCB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA890CFE-EA6A-4CFD-AF68-D6D90D09ACAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA890CFE-EA6A-4CFD-AF68-D6D90D09ACAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA890CFE-EA6A-4CFD-AF68-D6D90D09ACAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA890CFE-EA6A-4CFD-AF68-D6D90D09ACAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82E8446F-245E-4687-8DC1-D2A84166EC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82E8446F-245E-4687-8DC1-D2A84166EC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82E8446F-245E-4687-8DC1-D2A84166EC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82E8446F-245E-4687-8DC1-D2A84166EC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{927B6357-2979-48E2-B590-97F9D156E736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{927B6357-2979-48E2-B590-97F9D156E736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{927B6357-2979-48E2-B590-97F9D156E736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{927B6357-2979-48E2-B590-97F9D156E736}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,5 +133,8 @@ Global
 		{DB14430E-62D7-4583-ABC5-A1C60E85F18F} = {C9A56BE8-0567-4335-98C0-95B5A707DDDD}
 		{8486030A-D38E-458C-AEB8-F013FDA73D52} = {5CAB9D69-81CE-4563-8EE3-923768DEA45E}
 		{BA37942F-9CF4-4417-AA11-A34B00D0CCB0} = {5CAB9D69-81CE-4563-8EE3-923768DEA45E}
+		{AA890CFE-EA6A-4CFD-AF68-D6D90D09ACAD} = {D46220B0-3166-4AD3-8ABA-E7CA079B70AD}
+		{82E8446F-245E-4687-8DC1-D2A84166EC19} = {D46220B0-3166-4AD3-8ABA-E7CA079B70AD}
+		{927B6357-2979-48E2-B590-97F9D156E736} = {D46220B0-3166-4AD3-8ABA-E7CA079B70AD}
 	EndGlobalSection
 EndGlobal

@@ -40,6 +40,7 @@ namespace Yekzen.Core.Autofac
                     return descriptor.ImplementationFactory(ServiceProvider.Current);
                 })
                 .ConfigureLifecycle(descriptor.Lifecycle)
+                .As(descriptor.ServiceType)
                 .CreateRegistration();
 
                 builder.RegisterComponent(registration);

@@ -34,15 +34,14 @@ namespace Yekzen.Data.RavenDb
             return Session.Query<TEntity>().ToHashSet();
         }
 
-        public void Create(TEntity entity)
+        public void Insert(TEntity entity)
         {
             Session.Store(entity);
-            Session.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            Session.Store(entity);
+            // save changes will take care of it
         }
 
         public void Delete(TEntity entity)

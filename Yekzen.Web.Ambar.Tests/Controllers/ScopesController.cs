@@ -15,14 +15,24 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
     [TestClass]
     public class ScopesControllerTest
     {
-      
+
+        /// <summary>
+        /// Use ClassInitialize to run code before running the first test in the class
+        /// </summary>
+        /// <param name="testContext"></param>
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            // Register dependency injection.
+            Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
+
+            // Register services.
+            Yekzen.ServiceModel.ServiceConfiguration.Run();
+        }
 
         [TestMethod]
         public void Get()
         {
-            //Register dependency injection.
-            Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
-            
             var id = ShortGuid.NewGuid().Value;
 
             // Arrange
@@ -97,7 +107,10 @@ namespace Yekzen.Web.Ambar.Tests.Controllers
             // Arrange
             var controller = new ScopesController();
 
-            // Act
+            // Add item.
+            controller.Post(new Scope { Id = id, Name = "Foo" });
+
+            // Act.
             controller.Delete(id);
 
             // Assert

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Yekzen.Core.DependencyInjection;
+using Yekzen.ServiceModel;
+using Yekzen.ServiceModel.Abstractions;
 
 namespace Yekzen.Web.Ambar
 {
@@ -22,6 +25,9 @@ namespace Yekzen.Web.Ambar
 
             //Register dependency injection.
             Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
+
+            // Register 
+            Yekzen.ServiceModel.ServiceConfiguration.Run();
 
         }
     }

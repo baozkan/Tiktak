@@ -16,7 +16,7 @@ namespace Yekzen.Data.RavenDb.Test
             using (var context = new RavenDbContext(store))
             {
                 var target = new RavenDbRepository<Foo>(context);
-                target.Create(new Foo { Bar = "Foo" });
+                target.Insert(new Foo { Bar = "Foo" });
 
                 var actual = target.Find(foo => foo.Bar == "Foo");
 

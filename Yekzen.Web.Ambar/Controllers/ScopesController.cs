@@ -9,58 +9,67 @@ using Yekzen.Domain.Metadata;
 using Yekzen.Core.Collections;
 using Yekzen.Data;
 using Yekzen.Core;
+using Yekzen.ServiceModel.Abstractions;
 
 namespace Yekzen.Web.Ambar.Controllers
 {
     public class ScopesController : ApiController
     {
-        private readonly IRepository<Scope> repository;
-
         public ScopesController()
         {
-            repository = ServiceProvider.Current.GetService<IRepository<Scope>>();
+            
         }
         // GET: api/Scopes
         public Collection Get()
         {
-            var items = repository.All();
-            var collection = new Collection { Type = "Array",  Limit = 25, Skip = 0 };
-            collection.Items.AddRange(items);
+            Collection collection = null;
+            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            {
+                var items = service.All<Scope>();
+                collection = new Collection { Type = "Array", Limit = 25, Skip = 0 };
+                collection.Items.AddRange(items);
+            }
+           
             return collection;
         }
 
         // GET: api/Scopes/5
         public Scope Get(string id)
         {
-            var scope = MemoryContext.Default.GetSet<Scope>().FirstOrDefault(p => p.Id == id);
+            Scope scope;
+            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            {
+                scope = service.Find<Scope>(p => p.Id == id);
+            }
             return scope;
         }
 
         // POST: api/Scopes
         public void Post([FromBody]Scope value)
         {
-            repository.Create(value);
+            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            {
+                service.Insert<Scope>(value);
+            }
         }
 
         // PUT: api/Scopes/5
         public void Put(string id, [FromBody]Scope value)
         {
-            var set = MemoryContext.Default.GetSet<Scope>();
-            set.Remove(p => p.Id == id);
-            set.Add(value);
+            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            {
+                service.Update<Scope>(value);
+            }
         }
 
         // DELETE: api/Scopes/5
         public void Delete(string id)
         {
-            MemoryContext.Default.GetSet<Scope>().Remove(p => p.Id == id);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            var unitOfWork = ServiceProvider.Current.GetService<IUnitOfWork>();
-            unitOfWork.Dispose();
-            base.Dispose(disposing);
+            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            {
+                var scope = service.Find<Scope>(p => p.Id == id);
+                service.Delete<Scope>(scope);
+            }
         }
     }
 }

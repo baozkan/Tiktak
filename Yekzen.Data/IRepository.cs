@@ -33,7 +33,7 @@ namespace Yekzen.Data
         /// 
         /// </summary>
         /// <param name="entity"></param>
-        void Create(TEntity entity);
+        void Insert(TEntity entity);
         
         /// <summary>
         /// 

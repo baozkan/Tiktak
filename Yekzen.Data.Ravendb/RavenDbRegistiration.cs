@@ -16,6 +16,7 @@ namespace Yekzen.Data.RavenDb
         {
             var store = new EmbeddableDocumentStore();
             store.Initialize();
+            store.Conventions.AllowQueriesOnId = true;
 
             var context = new RavenDbContext(store);
 

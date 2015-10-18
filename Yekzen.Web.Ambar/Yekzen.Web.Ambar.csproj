@@ -243,6 +243,14 @@
       <Project>{62735391-0ab3-41c5-8757-17bc086a6eba}</Project>
       <Name>Yekzen.Domain.Metadata</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yekzen.ServiceModel.Abstractions\Yekzen.ServiceModel.Abstractions.csproj">
+      <Project>{aa890cfe-ea6a-4cfd-af68-d6d90d09acad}</Project>
+      <Name>Yekzen.ServiceModel.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yekzen.ServiceModel\Yekzen.ServiceModel.csproj">
+      <Project>{82e8446f-245e-4687-8dc1-d2a84166ec19}</Project>
+      <Name>Yekzen.ServiceModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
