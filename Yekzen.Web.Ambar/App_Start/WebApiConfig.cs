@@ -14,6 +14,10 @@ namespace Yekzen.Web.Ambar
         {
             // Web API configuration and services
 
+            // Allow CORS for all origins. (Caution!)
+            var cors = new System.Web.Http.Cors.EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
