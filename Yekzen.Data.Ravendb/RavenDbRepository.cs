@@ -18,6 +18,16 @@ namespace Yekzen.Data.RavenDb
             this.Session = ravenDbContext.Session;
         }
 
+        public TEntity FindByKey<TKey>(TKey key)
+        {
+            Requires.IsType<TKey, string>(key, "key");
+
+            var id = key as string;
+            var entity = Session.Load<TEntity>(id);
+            return entity;
+
+        }
+
         public TEntity Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             var entity = Session.Query<TEntity>().FirstOrDefault(predicate);

@@ -9,6 +9,15 @@ namespace Yekzen.Data
 {
     public interface IRepository<TEntity> where TEntity : class
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        TEntity FindByKey<TKey>(TKey key);
+
         /// <summary>
         /// 
         /// </summary>

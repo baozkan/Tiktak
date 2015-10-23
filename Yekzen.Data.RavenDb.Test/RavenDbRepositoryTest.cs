@@ -16,9 +16,10 @@ namespace Yekzen.Data.RavenDb.Test
             using (var context = new RavenDbContext(store))
             {
                 var target = new RavenDbRepository<Foo>(context);
-                target.Insert(new Foo { Bar = "Foo" });
+                var foo = new Foo { Bar = "Foo" };
+                target.Insert(foo);
 
-                var actual = target.Find(foo => foo.Bar == "Foo");
+                var actual = target.Find(p => p.Bar == "Foo");
 
                 Assert.IsNotNull(actual);
             }

@@ -16,6 +16,11 @@ namespace Yekzen.ServiceModel.Tests
             this.set = new HashSet<TEntity>();
         }
 
+        TEntity IRepository<TEntity>.FindByKey<TKey>(TKey key)
+        {
+            throw new NotSupportedException();
+        }
+
         TEntity IRepository<TEntity>.Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return this.set
