@@ -23,7 +23,7 @@ namespace Yekzen.Web.Ambar.Controllers
         public Collection Get()
         {
             Collection collection = null;
-            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 var items = service.All<Scope>();
                 collection = new Collection { Type = "Array", Limit = 25, Skip = 0 };
@@ -37,7 +37,7 @@ namespace Yekzen.Web.Ambar.Controllers
         public Scope Get(string id)
         {
             Scope scope;
-            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 scope = service.Find<Scope>(p => p.Id == id);
             }
@@ -47,7 +47,7 @@ namespace Yekzen.Web.Ambar.Controllers
         // POST: api/Scopes
         public void Post([FromBody]Scope value)
         {
-            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 service.Insert<Scope>(value);
             }
@@ -56,7 +56,7 @@ namespace Yekzen.Web.Ambar.Controllers
         // PUT: api/Scopes/5
         public void Put(string id, [FromBody]Scope value)
         {
-            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 service.Update<Scope>(value);
             }
@@ -65,7 +65,7 @@ namespace Yekzen.Web.Ambar.Controllers
         // DELETE: api/Scopes/5
         public void Delete(string id)
         {
-            using (var service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 var scope = service.Find<Scope>(p => p.Id == id);
                 service.Delete<Scope>(scope);

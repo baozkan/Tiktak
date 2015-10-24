@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Yekzen.ServiceModel.Abstractions
 {
-    public interface IRepositoryService : IDisposable
+    public interface IDocumentService : IDisposable
     {
         TEntity Find<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class;
 

@@ -13,7 +13,7 @@ namespace Yekzen.ServiceModel
         public static void Run()
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.Transient<IRepositoryService, RepositoryService>();
+            serviceCollection.Transient<IDocumentService, RepositoryService>();
             serviceCollection.Update();
         }
     }

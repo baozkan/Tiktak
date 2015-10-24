@@ -8,7 +8,7 @@ using Yekzen.Data;
 
 namespace Yekzen.ServiceModel
 {
-    public class RepositoryService : ServiceModel.Abstractions.IRepositoryService
+    public class RepositoryService : ServiceModel.Abstractions.IDocumentService
     {
         private readonly IUnitOfWork unitOfWork;
 
@@ -23,38 +23,38 @@ namespace Yekzen.ServiceModel
             return repository;
         }
 
-        TEntity Abstractions.IRepositoryService.Find<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        TEntity Abstractions.IDocumentService.Find<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return CreateRepository<TEntity>()
                 .Find(predicate);
         }
 
 
-        ICollection<TEntity> Abstractions.IRepositoryService.Query<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        ICollection<TEntity> Abstractions.IDocumentService.Query<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return CreateRepository<TEntity>()
                 .Query(predicate);
         }
 
-        ICollection<TEntity> Abstractions.IRepositoryService.All<TEntity>()
+        ICollection<TEntity> Abstractions.IDocumentService.All<TEntity>()
         {
             return CreateRepository<TEntity>()
                 .All();
         }
 
-        void Abstractions.IRepositoryService.Insert<TEntity>(TEntity entity)
+        void Abstractions.IDocumentService.Insert<TEntity>(TEntity entity)
         {
             CreateRepository<TEntity>()
                 .Insert(entity);
         }
 
-        void Abstractions.IRepositoryService.Update<TEntity>(TEntity entity)
+        void Abstractions.IDocumentService.Update<TEntity>(TEntity entity)
         {
             CreateRepository<TEntity>()
                 .Update(entity);
         }
 
-        void Abstractions.IRepositoryService.Delete<TEntity>(TEntity entity)
+        void Abstractions.IDocumentService.Delete<TEntity>(TEntity entity)
         {
             CreateRepository<TEntity>()
                 .Delete(entity);

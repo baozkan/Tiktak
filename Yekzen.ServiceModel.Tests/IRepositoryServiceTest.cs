@@ -56,7 +56,7 @@ namespace Yekzen.ServiceModel.Tests
         public static void MyClassInitialize(TestContext testContext) 
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.Transient<IRepositoryService>(p => new RepositoryService());
+            serviceCollection.Transient<IDocumentService>(p => new RepositoryService());
 
             // prepare substitude of IUnitOfWork;
             var unitOfWork = Substitute.For<IUnitOfWork>();
@@ -87,7 +87,7 @@ namespace Yekzen.ServiceModel.Tests
         {
             saveAllChanges = false;
             var expected = true;
-            using(IRepositoryService service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using(IDocumentService service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 // do nothing.
             }
@@ -100,7 +100,7 @@ namespace Yekzen.ServiceModel.Tests
         {
             var expected = "Foo";
             var actual = string.Empty;
-            using (IRepositoryService service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (IDocumentService service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 var foo = new Foo { Bar = expected };
                 service.Insert<Foo>(foo);
@@ -117,13 +117,13 @@ namespace Yekzen.ServiceModel.Tests
         {
             var expected = "Foo";
             var actual = string.Empty;
-            using (IRepositoryService service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (IDocumentService service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 var foo = new Foo { Bar = expected };
                 service.Insert<Foo>(foo);
             }
 
-            using (IRepositoryService service = ServiceProvider.Current.GetService<IRepositoryService>())
+            using (IDocumentService service = ServiceProvider.Current.GetService<IDocumentService>())
             {
                 var target = service.Find<Foo>(p => true);
                 actual = target.Bar;
