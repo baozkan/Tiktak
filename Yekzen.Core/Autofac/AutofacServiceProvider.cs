@@ -20,6 +20,10 @@ namespace Yekzen.Core.Autofac
         {
             if (serviceType == typeof(IContainer))
                 return container;
+
+            if (!container.IsRegistered(serviceType))
+                throw new NotRegisteredException(serviceType);
+
             return container.Resolve(serviceType);
         }
     }

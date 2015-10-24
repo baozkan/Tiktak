@@ -74,6 +74,9 @@
     <Compile Include="DependencyInjection\ServiceDescriptor.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IServiceProviderExtensions.cs" />
+    <Compile Include="NotRegisteredException.cs" />
+    <Compile Include="Settings\ISettingsProvider.cs" />
+    <Compile Include="Settings\ISettingsStore.cs" />
     <Compile Include="NotNullAttribute.cs" />
     <Compile Include="Requires.cs" />
     <Compile Include="Resources.Designer.cs">

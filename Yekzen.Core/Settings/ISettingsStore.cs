@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Yekzen.Core
+namespace Yekzen.Core.Settings
 {
-    public interface IConfiguration
+    public interface ISettingsStore
     {
-
     }
 }
