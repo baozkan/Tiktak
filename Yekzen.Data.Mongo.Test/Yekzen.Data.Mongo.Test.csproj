@@ -83,6 +83,10 @@
       <Project>{852ba0a2-2a9a-4c03-835a-93761b141932}</Project>
       <Name>Yekzen.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yekzen.QualityTools.UnitTest\Yekzen.QualityTools.UnitTest.csproj">
+      <Project>{fa9e6344-dedf-4e22-9b15-8f6bc684aef0}</Project>
+      <Name>Yekzen.QualityTools.UnitTest</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

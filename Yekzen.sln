@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Data.Mongo", "Yekzen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Data.Mongo.Test", "Yekzen.Data.Mongo.Test\Yekzen.Data.Mongo.Test.csproj", "{94043F88-FCE4-4BB1-B1D6-3F1C68DFA980}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.QualityTools.UnitTest", "Yekzen.QualityTools.UnitTest\Yekzen.QualityTools.UnitTest.csproj", "{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,10 @@ Global
 		{94043F88-FCE4-4BB1-B1D6-3F1C68DFA980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94043F88-FCE4-4BB1-B1D6-3F1C68DFA980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94043F88-FCE4-4BB1-B1D6-3F1C68DFA980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,5 +156,6 @@ Global
 		{927B6357-2979-48E2-B590-97F9D156E736} = {D46220B0-3166-4AD3-8ABA-E7CA079B70AD}
 		{8C777D9E-5A70-4236-9611-B9CCE7269CE2} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
 		{94043F88-FCE4-4BB1-B1D6-3F1C68DFA980} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
+		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0} = {C9A56BE8-0567-4335-98C0-95B5A707DDDD}
 	EndGlobalSection
 EndGlobal

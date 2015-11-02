@@ -6,6 +6,7 @@ using Yekzen.Core.DependencyInjection;
 using NSubstitute;
 using MongoDB.Driver;
 using Yekzen.Core.Settings;
+using System.Threading.Tasks;
 
 namespace Yekzen.Data.Mongo.Test
 {
@@ -15,9 +16,9 @@ namespace Yekzen.Data.Mongo.Test
     [TestClass]
     public class MongoContextTest
     {
-        static readonly MongoSettings settings = new MongoSettings { DatabaseName = "TestStore" };
-        
-        public MongoContextTest(){ }
+        static readonly MongoSettings settings = new MongoSettings { DatabaseName = "TestStore", Host="localhost", Port = 27017, Timeout = 2  };
+
+        public MongoContextTest() { }
 
         private TestContext testContextInstance;
 
@@ -65,12 +66,12 @@ namespace Yekzen.Data.Mongo.Test
         /// Use ClassCleanup to run code after all tests in a class have run. 
         /// </summary>
         [ClassCleanup()]
-        public static void Clean() 
+        public static void Clean()
         {
-            var client = new MongoClient();
-            client.DropDatabaseAsync(settings.DatabaseName);
+            //var client = new MongoClient();
+            //client.DropDatabaseAsync(settings.DatabaseName);
         }
-        
+
         //
         // Use TestInitialize to run code before running each test 
         // [TestInitialize()]
@@ -82,13 +83,25 @@ namespace Yekzen.Data.Mongo.Test
         //
         #endregion
 
+        private static MongoContext CreateTarget()
+        {
+            MongoContext context = null;
+
+            // Check if MongoDB is alive.
+            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { context = new MongoContext(); });
+
+            return context;
+        }
+
         [TestMethod]
         public void CreateMongoContextTest()
         {
-            var target = new MongoContext();
+            MongoContext context = CreateTarget();
 
-            Assert.IsNotNull(target);
+            Assert.IsNotNull(context);
         }
+
+
 
         [TestMethod]
         public void CreateRepositoryTest()
@@ -101,20 +114,53 @@ namespace Yekzen.Data.Mongo.Test
 
 
         [TestMethod]
-        public void CreateRepositoryInsertTest()
+        public void RepositoryInsertTest()
         {
             var target = new MongoContext();
             var repository = new MongoRepository<Employee>(target);
 
-            var document = new Employee() 
+            var document = new Employee()
             {
                 FirstName = "Albert",
                 LastName = "Einstain"
             };
-            
+
             repository.Insert(document);
 
             Assert.IsNotNull(repository);
+        }
+
+        [TestMethod]
+        public void RepositoryAllTest()
+        {
+            var target = new MongoContext();
+            var repository = new MongoRepository<Employee>(target);
+
+            var collection = repository.All(); ;
+
+            Assert.IsTrue(collection.Count > 0);
+        }
+
+        [TestMethod]
+        public void RepositoryFindByKeyTest()
+        {
+            var target = new MongoContext();
+            var repository = new MongoRepository<Employee>(target);
+
+            var entity = repository.FindByKey<string>(""); ;
+
+            Assert.IsNull(entity);
+        }
+
+        [TestMethod]
+        public void RepositoryInsertAndFindByKeyTest()
+        {
+            var target = new MongoContext();
+            var repository = new MongoRepository<Employee>(target);
+
+            var entity = repository.FindByKey<string>(""); ;
+
+            Assert.IsNull(entity);
         }
 
     }

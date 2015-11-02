@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using MongoDB.Bson.Serialization.Conventions;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 
 namespace Yekzen.Data.Mongo
 {
@@ -13,14 +18,20 @@ namespace Yekzen.Data.Mongo
         public MongoRepository(IUnitOfWork context)
         { 
             var name = typeof(TEntity).Name;
-            this.collection = (context as MongoContext).Database.GetCollection<TEntity>(name); 
+            
+            this.collection = (context as MongoContext).Database.GetCollection<TEntity>(name);
         }
 
         #region IRepository<TEntity> Implemantation
         
         public TEntity FindByKey<TKey>(TKey key)
         {
-            throw new NotImplementedException();
+            if (!(key is string))
+                throw new NotSupportedException();
+            var filter = Builders<TEntity>.Filter.Eq("_id", key);
+            var task = this.collection.Find(filter).FirstOrDefaultAsync();
+            task.Wait();
+            return task.Result;
         }
 
         public TEntity Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
@@ -35,13 +46,17 @@ namespace Yekzen.Data.Mongo
 
         public ICollection<TEntity> All()
         {
-            throw new NotImplementedException();
+            
+            
+            return this.collection.AsQueryable().ToList();
         }
-
+       
         public void Insert(TEntity entity)
         {
-            var task = this.collection.InsertOneAsync(entity);
-            task.Wait();
+            this.collection
+                .InsertOneAsync(entity)
+                .Wait();
+            
         }
 
         public void Update(TEntity entity)
