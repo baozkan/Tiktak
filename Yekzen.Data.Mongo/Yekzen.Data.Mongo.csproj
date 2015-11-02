@@ -52,6 +52,7 @@
     <Compile Include="MongoContext.cs" />
     <Compile Include="MongoSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringIdRepresentationConvention .cs" />
     <Compile Include="UnreachableException.cs" />
   </ItemGroup>
   <ItemGroup>

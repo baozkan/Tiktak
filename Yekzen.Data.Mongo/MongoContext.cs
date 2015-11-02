@@ -72,7 +72,8 @@ namespace Yekzen.Data.Mongo
                 new IgnoreExtraElementsConvention(true),
                 new NamedParameterCreatorMapConvention(),
                 new StringObjectIdIdGeneratorConvention(), // should be before LookupIdGeneratorConvention
-                new LookupIdGeneratorConvention()
+                new LookupIdGeneratorConvention(),
+                new StringIdRepresentationConvention(MongoDB.Bson.BsonType.ObjectId)
             });
 
             ConventionRegistry.Remove("__defaults__");

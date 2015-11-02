@@ -60,6 +60,10 @@ namespace Yekzen.Data.Mongo.Test
 
             // Update registration.
             serviceCollection.Update();
+
+            // Check if MongoDB is alive.
+            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { new MongoContext(); });
+
         }
 
         /// <summary>
