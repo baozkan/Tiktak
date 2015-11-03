@@ -28,7 +28,7 @@ namespace Yekzen.Data.Mongo
         {
             if (!(key is string))
                 throw new NotSupportedException();
-            var filter = Builders<TEntity>.Filter.Eq("_id", key);
+            var filter = Builders<TEntity>.Filter.Eq("Id", key);
             var task = this.collection.Find(filter).FirstOrDefaultAsync();
             task.Wait();
             return task.Result;
@@ -46,9 +46,8 @@ namespace Yekzen.Data.Mongo
 
         public ICollection<TEntity> All()
         {
-            
-            
-            return this.collection.AsQueryable().ToList();
+            var hashSet = new HashSet<TEntity>(this.collection.AsQueryable());
+            return hashSet;
         }
        
         public void Insert(TEntity entity)
@@ -61,6 +60,7 @@ namespace Yekzen.Data.Mongo
 
         public void Update(TEntity entity)
         {
+            this.collection.UpdateOneAsync()
             throw new NotImplementedException();
         }
 
