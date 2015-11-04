@@ -60,7 +60,7 @@ namespace Yekzen.Data.Mongo
 
         public void Update(TEntity entity)
         {
-            this.collection.UpdateOneAsync()
+            //this.collection.UpdateOneAsync()
             throw new NotImplementedException();
         }
 
