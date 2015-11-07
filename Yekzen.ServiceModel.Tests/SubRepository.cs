@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Yekzen.Data;
@@ -44,14 +45,14 @@ namespace Yekzen.ServiceModel.Tests
             this.set.Add(entity);
         }
 
-        void IRepository<TEntity>.Update(TEntity entity)
+        void IRepository<TEntity>.Update(Expression<Func<TEntity,bool>> predicate, TEntity entity)
         {
             // Do nothing. İtem already changed.
         }
 
-        void IRepository<TEntity>.Delete(TEntity entity)
+        void IRepository<TEntity>.Delete(Expression<Func<TEntity, bool>> predicate)
         {
-            this.set.Remove(entity);
+            //this.set.Remove(entity);
         }
     }
 }

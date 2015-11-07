@@ -48,12 +48,12 @@ namespace Yekzen.Data
         /// 
         /// </summary>
         /// <param name="entity"></param>
-        void Update(TEntity entity);
+        void Update(Expression<Func<TEntity,bool>> predicate, TEntity entity);
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="entity"></param>
-        void Delete(TEntity entity);
+        void Delete(Expression<Func<TEntity, bool>> predicate);
     }
 }

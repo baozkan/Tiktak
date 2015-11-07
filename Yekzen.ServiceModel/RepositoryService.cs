@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Yekzen.Core;
@@ -48,16 +49,16 @@ namespace Yekzen.ServiceModel
                 .Insert(entity);
         }
 
-        void Abstractions.IDocumentService.Update<TEntity>(TEntity entity)
+        void Abstractions.IDocumentService.Update<TEntity>(Expression<Func<TEntity, bool>> predicate, TEntity entity)
         {
             CreateRepository<TEntity>()
-                .Update(entity);
+                .Update(predicate,entity);
         }
 
-        void Abstractions.IDocumentService.Delete<TEntity>(TEntity entity)
+        void Abstractions.IDocumentService.Delete<TEntity>(Expression<Func<TEntity, bool>> predicate)
         {
             CreateRepository<TEntity>()
-                .Delete(entity);
+                .Delete(predicate);
         }
 
         void IDisposable.Dispose()

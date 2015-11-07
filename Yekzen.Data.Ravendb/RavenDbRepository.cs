@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Yekzen.Core;
@@ -49,13 +50,14 @@ namespace Yekzen.Data.RavenDb
             Session.Store(entity);
         }
 
-        public void Update(TEntity entity)
+        public void Update(Expression<Func<TEntity,bool>> predicate,TEntity entity)
         {
             // save changes will take care of it
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(Expression<Func<TEntity, bool>> predicate)
         {
+            var entity = this.Find(predicate);
             Session.Delete<TEntity>(entity);
         }
     }

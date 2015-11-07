@@ -58,7 +58,7 @@ namespace Yekzen.Web.Ambar.Controllers
         {
             using (var service = ServiceProvider.Current.GetService<IDocumentService>())
             {
-                service.Update<Scope>(value);
+                service.Update<Scope>(p => p.Id == id,value);
             }
         }
 
@@ -67,8 +67,7 @@ namespace Yekzen.Web.Ambar.Controllers
         {
             using (var service = ServiceProvider.Current.GetService<IDocumentService>())
             {
-                var scope = service.Find<Scope>(p => p.Id == id);
-                service.Delete<Scope>(scope);
+                service.Delete<Scope>(p => p.Id == id);
             }
         }
     }

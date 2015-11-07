@@ -153,25 +153,6 @@ namespace Yekzen.Data.Mongo.Test
         }
 
         [TestMethod]
-        public void RepositoryFindByKeyTest()
-        {
-            var target = new MongoContext();
-            var repository = new MongoRepository<Employee>(target);
-
-            Employee employee = null;
-            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = InsertInternal(repository); });
-            var expected = employee.Id;
-            
-            employee = repository.FindByKey<string>(expected);
-
-            Assert.IsNotNull(employee);
-
-            var actual = employee.Id;
-
-            Assert.AreEqual(expected,actual);
-        }
-
-        [TestMethod]
         public void RepositoryUpdateTest()
         {
             var target = new MongoContext();
@@ -182,13 +163,49 @@ namespace Yekzen.Data.Mongo.Test
             
             employee.FirstName = expected;
             
-            repository.Update(employee);
+            repository.Update(p => p.Id == employee.Id,employee);
 
-            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = repository.FindByKey<string>(employee.Id); });
+            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = repository.Find(p => p.Id == employee.Id); });
             
             var actual = employee.FirstName;
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RepositoryFindTest()
+        {
+            var target = new MongoContext();
+            var repository = new MongoRepository<Employee>(target);
+            var expected = "Albert";
+            Employee employee = null;
+
+            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = InsertInternal(repository); });
+
+            employee = repository.Find(p => p.Id == employee.Id);
+
+            var actual = employee.FirstName;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RepositoryDeleteTest()
+        {
+            var target = new MongoContext();
+            var repository = new MongoRepository<Employee>(target);
+            Employee employee = null;
+            
+            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = InsertInternal(repository); });
+
+            if(string.IsNullOrEmpty(employee.Id))
+                Assert.Inconclusive("Insert failed.");
+            
+            repository.Delete(p => p.Id == employee.Id);
+            
+            employee = repository.Find(p => p.Id == employee.Id);
+
+            Assert.IsNull(employee);
         }
 
 

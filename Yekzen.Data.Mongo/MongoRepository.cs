@@ -8,6 +8,7 @@ using MongoDB.Driver.Linq;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson;
+using System.Linq.Expressions;
 
 namespace Yekzen.Data.Mongo
 {
@@ -26,17 +27,16 @@ namespace Yekzen.Data.Mongo
         
         public TEntity FindByKey<TKey>(TKey key)
         {
-            if (!(key is string))
-                throw new NotSupportedException();
-            var filter = Builders<TEntity>.Filter.Eq("Id", key);
-            var task = this.collection.Find(filter).FirstOrDefaultAsync();
-            task.Wait();
-            return task.Result;
+            throw new NotImplementedException();
         }
 
         public TEntity Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            var result = this.collection
+                .Find(predicate)
+                .SingleOrDefaultAsync();
+            result.Wait();
+            return result.Result;
         }
 
         public ICollection<TEntity> Query(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
@@ -52,21 +52,21 @@ namespace Yekzen.Data.Mongo
        
         public void Insert(TEntity entity)
         {
-            this.collection
-                .InsertOneAsync(entity)
-                .Wait();
-            
+            var result = this.collection
+                .InsertOneAsync(entity);
+            result.Wait();
         }
 
-        public void Update(TEntity entity)
+        public void Update(Expression<Func<TEntity,bool>> predicate,TEntity entity)
         {
-            //this.collection.UpdateOneAsync()
-            throw new NotImplementedException();
+            var result = this.collection.ReplaceOneAsync(predicate, entity);
+            result.Wait();
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(Expression<Func<TEntity,bool>> predicate)
         {
-            throw new NotImplementedException();
+            var result = this.collection.DeleteOneAsync<TEntity>(predicate);
+            result.Wait();
         }
 
         #endregion
