@@ -10,7 +10,9 @@ namespace Yekzen.Web.Bootstrap
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/app.js"));
+                        "~/Scripts/jquery.extension.js",
+                        "~/Scripts/sammy-{version}.js",
+                        "~/Scripts/underscore.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -22,8 +24,12 @@ namespace Yekzen.Web.Bootstrap
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Scripts/underscore.js"));
+                      "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                      "~/Scripts/app/main.js",
+                      "~/Scripts/app/router.js",
+                      "~/Scripts/app/app.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

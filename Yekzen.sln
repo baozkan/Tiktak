@@ -51,6 +51,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Data.Mongo.Test", "Y
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.QualityTools.UnitTest", "Yekzen.QualityTools.UnitTest\Yekzen.QualityTools.UnitTest.csproj", "{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Web.Deste", "Yekzen.Web.Deste\Yekzen.Web.Deste.csproj", "{54921B31-771E-4A7B-9E1E-85DCAAA49172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yekzen.Web.Deste.Tests", "Yekzen.Web.Deste.Tests\Yekzen.Web.Deste.Tests.csproj", "{04042510-B520-4D2F-9FB9-743E91344FE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +137,14 @@ Global
 		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54921B31-771E-4A7B-9E1E-85DCAAA49172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54921B31-771E-4A7B-9E1E-85DCAAA49172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54921B31-771E-4A7B-9E1E-85DCAAA49172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54921B31-771E-4A7B-9E1E-85DCAAA49172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04042510-B520-4D2F-9FB9-743E91344FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04042510-B520-4D2F-9FB9-743E91344FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04042510-B520-4D2F-9FB9-743E91344FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04042510-B520-4D2F-9FB9-743E91344FE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -157,5 +169,7 @@ Global
 		{8C777D9E-5A70-4236-9611-B9CCE7269CE2} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
 		{94043F88-FCE4-4BB1-B1D6-3F1C68DFA980} = {9E26F3A4-819C-4AC7-9DA9-4B0115081C1D}
 		{FA9E6344-DEDF-4E22-9B15-8F6BC684AEF0} = {C9A56BE8-0567-4335-98C0-95B5A707DDDD}
+		{54921B31-771E-4A7B-9E1E-85DCAAA49172} = {5CAB9D69-81CE-4563-8EE3-923768DEA45E}
+		{04042510-B520-4D2F-9FB9-743E91344FE8} = {5CAB9D69-81CE-4563-8EE3-923768DEA45E}
 	EndGlobalSection
 EndGlobal
