@@ -79,7 +79,7 @@
     <Compile Include="Settings\ISettingsProvider.cs" />
     <Compile Include="Settings\ISettingsStore.cs" />
     <Compile Include="NotNullAttribute.cs" />
-    <Compile Include="Requires.cs" />
+    <Compile Include="Require.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

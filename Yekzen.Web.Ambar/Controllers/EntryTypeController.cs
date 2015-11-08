@@ -7,15 +7,24 @@ using System.Web.Http;
 using Yekzen.Data.Memory;
 using Yekzen.Domain.Metadata;
 using Yekzen.Core.Collections;
+using Yekzen.ServiceModel.Abstractions;
+using Yekzen.Core;
 
 namespace Yekzen.Web.Ambar.Controllers
 {
-    public class SchemaController : ApiController
+    public class EntryTypeController : ApiController
     {
+        private readonly IDocumentService documents;
+
+        public EntryTypeController()
+        {
+            this.documents = ServiceProvider.Current.GetService<IDocumentService>();
+        }
+
         // GET: api/Schema
         public Collection Get(string scope)
         {
-            var items = MemoryContext.Default.GetSet<Schema>();
+            var items = MemoryContext.Default.GetSet<EntryType>();
             var collection = new Collection { Type = "Array", Limit = 25, Skip = 0 };
             collection.Items.AddRange(items);
             return collection;

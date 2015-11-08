@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Yekzen.Core
 {
-    public static class Requires
+    public static class Require
     {
         /// <summary>
         /// Throws an exception if the specified parameter's value is null.

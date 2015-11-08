@@ -9,7 +9,7 @@ namespace Yekzen.Domain.Metadata
     /// Schemas are content types describing the shape of Entries. 
     /// They mainly consist of a list of fields acting as a blueprint for Entries.
     /// </summary>
-    public class Schema : Resource
+    public class EntryType : Resource
     {
         /// <summary>
         /// Name of the Schema.
@@ -34,7 +34,7 @@ namespace Yekzen.Domain.Metadata
         /// <summary>
         /// Constructor.
         /// </summary>
-        public Schema()
+        public EntryType()
         {
             this.Fields = new HashSet<Field>();
         }

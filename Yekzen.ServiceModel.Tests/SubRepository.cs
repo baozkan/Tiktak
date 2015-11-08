@@ -22,22 +22,17 @@ namespace Yekzen.ServiceModel.Tests
             throw new NotSupportedException();
         }
 
-        TEntity IRepository<TEntity>.Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        TEntity IRepository<TEntity>.Single(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return this.set
                 .FirstOrDefault(predicate.Compile());
         }
 
-        ICollection<TEntity> IRepository<TEntity>.Query(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        ICollection<TEntity> IRepository<TEntity>.Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return this.set
                 .Where(predicate.Compile())
                 .ToList();
-        }
-
-        ICollection<TEntity> IRepository<TEntity>.All()
-        {
-            return this.set;
         }
 
         void IRepository<TEntity>.Insert(TEntity entity)

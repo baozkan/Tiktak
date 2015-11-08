@@ -21,7 +21,7 @@ namespace Yekzen.Data.RavenDb
 
         public TEntity FindByKey<TKey>(TKey key)
         {
-            Requires.IsType<TKey, string>(key, "key");
+            Require.IsType<TKey, string>(key, "key");
 
             var id = key as string;
             var entity = Session.Load<TEntity>(id);
@@ -29,13 +29,13 @@ namespace Yekzen.Data.RavenDb
 
         }
 
-        public TEntity Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        public TEntity Single(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             var entity = Session.Query<TEntity>().FirstOrDefault(predicate);
             return entity;
         }
 
-        public ICollection<TEntity> Query(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        public ICollection<TEntity> Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return Session.Query<TEntity>().Where(predicate).ToHashSet();
         }
@@ -57,7 +57,7 @@ namespace Yekzen.Data.RavenDb
 
         public void Delete(Expression<Func<TEntity, bool>> predicate)
         {
-            var entity = this.Find(predicate);
+            var entity = this.Single(predicate);
             Session.Delete<TEntity>(entity);
         }
     }

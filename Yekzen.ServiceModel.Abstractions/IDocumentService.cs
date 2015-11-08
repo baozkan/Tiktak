@@ -9,11 +9,9 @@ namespace Yekzen.ServiceModel.Abstractions
 {
     public interface IDocumentService : IDisposable
     {
-        TEntity Find<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class;
+        TEntity Single<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class;
 
-        ICollection<TEntity> Query<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class;
-
-        ICollection<TEntity> All<TEntity>() where TEntity : class;
+        ICollection<TEntity> Find<TEntity>(Expression<Func<TEntity, bool>> predicate = null) where TEntity : class;
 
         void Insert<TEntity>(TEntity entity) where TEntity : class;
 

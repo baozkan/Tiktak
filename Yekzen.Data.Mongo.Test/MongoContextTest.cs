@@ -142,12 +142,12 @@ namespace Yekzen.Data.Mongo.Test
         }
 
         [TestMethod]
-        public void RepositoryAllTest()
+        public void RepositoryFindAllTest()
         {
             var target = new MongoContext();
             var repository = new MongoRepository<Employee>(target);
 
-            var collection = repository.All(); ;
+            var collection = repository.Find();
 
             Assert.IsTrue(collection.Count > 0);
         }
@@ -165,7 +165,7 @@ namespace Yekzen.Data.Mongo.Test
             
             repository.Update(p => p.Id == employee.Id,employee);
 
-            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = repository.Find(p => p.Id == employee.Id); });
+            Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = repository.Single(p => p.Id == employee.Id); });
             
             var actual = employee.FirstName;
 
@@ -173,7 +173,7 @@ namespace Yekzen.Data.Mongo.Test
         }
 
         [TestMethod]
-        public void RepositoryFindTest()
+        public void RepositorySingleTest()
         {
             var target = new MongoContext();
             var repository = new MongoRepository<Employee>(target);
@@ -182,7 +182,7 @@ namespace Yekzen.Data.Mongo.Test
 
             Yekzen.QualityTools.UnitTest.ExceptionAssert.InconclusiveWhenThrows<UnreachableException>(() => { employee = InsertInternal(repository); });
 
-            employee = repository.Find(p => p.Id == employee.Id);
+            employee = repository.Single(p => p.Id == employee.Id);
 
             var actual = employee.FirstName;
 
@@ -203,7 +203,7 @@ namespace Yekzen.Data.Mongo.Test
             
             repository.Delete(p => p.Id == employee.Id);
             
-            employee = repository.Find(p => p.Id == employee.Id);
+            employee = repository.Single(p => p.Id == employee.Id);
 
             Assert.IsNull(employee);
         }

@@ -105,7 +105,7 @@ namespace Yekzen.ServiceModel.Tests
                 var foo = new Foo { Bar = expected };
                 service.Insert<Foo>(foo);
 
-                var target = service.Find<Foo>(p => true);
+                var target = service.Single<Foo>(p => true);
                 actual = target.Bar;
             }
 
@@ -125,7 +125,7 @@ namespace Yekzen.ServiceModel.Tests
 
             using (IDocumentService service = ServiceProvider.Current.GetService<IDocumentService>())
             {
-                var target = service.Find<Foo>(p => true);
+                var target = service.Single<Foo>(p => true);
                 actual = target.Bar;
             }
 

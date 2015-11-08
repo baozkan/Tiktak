@@ -23,7 +23,7 @@ namespace Yekzen.Web.Bootstrap.Controllers
             var scopeLink = new Link { Id = "web-scope", Type = "Link", LinkType = "Scope" };
 
             // Create items.
-            var itemSchema = new Schema() { Id = "form-item-type", Name = "Form Item Type", Description = "For creating form items.", Type = "Schema", Scope = scopeLink };
+            var itemSchema = new EntryType() { Id = "form-item-type", Name = "Form Item Type", Description = "For creating form items.", Type = "Schema", Scope = scopeLink };
 
             itemSchema.Fields.Add(new Field() { Id = "Title", Name = "Title", Type = "Text" });
 
@@ -40,7 +40,7 @@ namespace Yekzen.Web.Bootstrap.Controllers
             submitEntry.Fields.Add("InputType", "submit");
 
             // Create Form
-            var formSchema = new Schema() { Id = "form-type", Name = "Form Type", Description = "For creating forms.", Type = "Schema", Scope = scopeLink };
+            var formSchema = new EntryType() { Id = "form-type", Name = "Form Type", Description = "For creating forms.", Type = "Schema", Scope = scopeLink };
 
             formSchema.Fields.Add(new Field { Id = "form-items", Name = "Items", Items = itemSchema, Type = "Collection" });
 

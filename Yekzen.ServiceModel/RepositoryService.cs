@@ -24,23 +24,17 @@ namespace Yekzen.ServiceModel
             return repository;
         }
 
-        TEntity Abstractions.IDocumentService.Find<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        TEntity Abstractions.IDocumentService.Single<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        {
+            return CreateRepository<TEntity>()
+                .Single(predicate);
+        }
+
+
+        ICollection<TEntity> Abstractions.IDocumentService.Find<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return CreateRepository<TEntity>()
                 .Find(predicate);
-        }
-
-
-        ICollection<TEntity> Abstractions.IDocumentService.Query<TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
-        {
-            return CreateRepository<TEntity>()
-                .Query(predicate);
-        }
-
-        ICollection<TEntity> Abstractions.IDocumentService.All<TEntity>()
-        {
-            return CreateRepository<TEntity>()
-                .All();
         }
 
         void Abstractions.IDocumentService.Insert<TEntity>(TEntity entity)

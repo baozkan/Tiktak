@@ -26,7 +26,7 @@ namespace Yekzen.Data.Mongo
 
         private void GetDatabase(MongoSettings settings)
         {
-            Requires.NotNull(settings, "settings");
+            Require.NotNull(settings, "settings");
 
             // Register conventions.
             Register();

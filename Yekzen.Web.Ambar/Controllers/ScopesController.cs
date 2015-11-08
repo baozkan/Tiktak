@@ -15,60 +15,54 @@ namespace Yekzen.Web.Ambar.Controllers
 {
     public class ScopesController : ApiController
     {
+        private readonly IDocumentService documents;
+
         public ScopesController()
         {
-            
+            this.documents = ServiceProvider.Current.GetService<IDocumentService>();
         }
+
         // GET: api/Scopes
         public Collection Get()
         {
-            Collection collection = null;
-            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
-            {
-                var items = service.All<Scope>();
-                collection = new Collection { Type = "Array", Limit = 25, Skip = 0 };
-                collection.Items.AddRange(items);
-            }
-           
+            var items = documents.Find<Scope>();
+            Collection collection = new Collection { Type = "Array", Limit = 25, Skip = 0 };
+            collection.Items.AddRange(items);
             return collection;
         }
 
         // GET: api/Scopes/5
         public Scope Get(string id)
         {
-            Scope scope;
-            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
-            {
-                scope = service.Find<Scope>(p => p.Id == id);
-            }
+            Scope scope = documents.Single<Scope>(p => p.Id == id);
             return scope;
         }
 
         // POST: api/Scopes
         public void Post([FromBody]Scope value)
         {
-            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
-            {
-                service.Insert<Scope>(value);
-            }
+            documents.Insert<Scope>(value);
         }
 
         // PUT: api/Scopes/5
         public void Put(string id, [FromBody]Scope value)
         {
-            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
-            {
-                service.Update<Scope>(p => p.Id == id,value);
-            }
+            documents.Update<Scope>(p => p.Id == id, value);
         }
 
         // DELETE: api/Scopes/5
         public void Delete(string id)
         {
-            using (var service = ServiceProvider.Current.GetService<IDocumentService>())
+            documents.Delete<Scope>(p => p.Id == id);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (documents != null)
             {
-                service.Delete<Scope>(p => p.Id == id);
+                documents.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

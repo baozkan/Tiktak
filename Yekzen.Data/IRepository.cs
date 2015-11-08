@@ -23,21 +23,15 @@ namespace Yekzen.Data
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        TEntity Find(Expression<Func<TEntity, bool>> predicate);
+        TEntity Single(Expression<Func<TEntity, bool>> predicate);
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        ICollection<TEntity> Query(Expression<Func<TEntity, bool>> predicate);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        ICollection<TEntity> All();
-
+        ICollection<TEntity> Find(Expression<Func<TEntity, bool>> predicate = null);
+        
         /// <summary>
         /// 
         /// </summary>

@@ -28,7 +28,7 @@ namespace Yekzen.Domain.Metadata
         /// <summary>
         /// (List type only) Schema for items.
         /// </summary>
-        public Schema Items { get; set; }
+        public EntryType Items { get; set; }
 
         /// <summary>
         /// Describes whether the Field is mandatory.

@@ -19,7 +19,7 @@ namespace Yekzen.Data.RavenDb.Test
                 var foo = new Foo { Bar = "Foo" };
                 target.Insert(foo);
 
-                var actual = target.Find(p => p.Bar == "Foo");
+                var actual = target.Single(p => p.Bar == "Foo");
 
                 Assert.IsNotNull(actual);
             }

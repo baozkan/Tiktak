@@ -30,7 +30,7 @@ namespace Yekzen.Data.Mongo
             throw new NotImplementedException();
         }
 
-        public TEntity Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        public TEntity Single(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             var result = this.collection
                 .Find(predicate)
@@ -39,17 +39,23 @@ namespace Yekzen.Data.Mongo
             return result.Result;
         }
 
-        public ICollection<TEntity> Query(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        public ICollection<TEntity> Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate = null)
         {
-            throw new NotImplementedException();
+            if (predicate == null)
+            {
+                var result = new HashSet<TEntity>(this.collection.AsQueryable<TEntity>());
+                return  result;
+            }
+            else
+            {
+                var result = this.collection.Find<TEntity>(predicate)
+                    .ToCollectionAsync();
+                result.Wait();
+                return result.Result;
+            }
         }
 
-        public ICollection<TEntity> All()
-        {
-            var hashSet = new HashSet<TEntity>(this.collection.AsQueryable());
-            return hashSet;
-        }
-       
+        
         public void Insert(TEntity entity)
         {
             var result = this.collection

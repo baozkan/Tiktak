@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAsyncCursorExtensions.cs" />
+    <Compile Include="IAsyncCursorSourceExtensions.cs" />
     <Compile Include="MongoDbRegistration.cs" />
     <Compile Include="MongoRepository.cs" />
     <Compile Include="MongoContext.cs" />
