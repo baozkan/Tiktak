@@ -28,7 +28,8 @@ namespace Yekzen.Web.Ambar
             );
 
             //Register dependency injection.
-            Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
+            //Yekzen.Data.RavenDb.RavenDbRegistiration.Run();
+            Yekzen.Data.Mongo.MongoDbRegistration.Run();
 
             // Register 
             Yekzen.ServiceModel.ServiceConfiguration.Run();

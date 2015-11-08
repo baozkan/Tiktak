@@ -237,6 +237,10 @@
       <Project>{d54372f5-45b0-4108-b63b-ca5932bc85bc}</Project>
       <Name>Yekzen.Data.Memory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yekzen.Data.Mongo\Yekzen.Data.Mongo.csproj">
+      <Project>{8c777d9e-5a70-4236-9611-b9cce7269ce2}</Project>
+      <Name>Yekzen.Data.Mongo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yekzen.Data.Ravendb\Yekzen.Data.RavenDb.csproj">
       <Project>{431a566f-eaf2-4149-9b95-1323adc489b0}</Project>
       <Name>Yekzen.Data.RavenDb</Name>

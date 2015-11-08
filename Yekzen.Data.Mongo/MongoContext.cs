@@ -82,12 +82,12 @@ namespace Yekzen.Data.Mongo
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            // Do nothing.
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            this.SaveChanges();
         }
     }
 }

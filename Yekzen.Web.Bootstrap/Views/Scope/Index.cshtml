@@ -50,7 +50,7 @@
 
     <script id="ltScore" type="text/template">
         <% $.each(Items, function (index, item) { %>
-        <li class="list-group-item"><button b></button><%=item.Name%></li>
+        <li class="list-group-item"><button class="btn btn-sm btn-danger btn-remove" type="button" data-id="<%=item.Id%>"><i class="glyphicon glyphicon-remove"></i></button><%=item.Name%></li>
         <% }); %>
     </script>
 
@@ -79,6 +79,14 @@
                     });
                     event.preventDefault();
                 });
+            });
+
+            $(".list-scope").on("click", ".btn-remove", function () {
+                var self = $(this);
+                $.delete('http://localhost:19912/api/scopes/' + self.attr("data-id"), null, function (data) {
+                    loadList();
+                });
+                event.preventDefault();
             });
         });
     </script>
