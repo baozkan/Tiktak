@@ -24,7 +24,7 @@ namespace Yekzen.Web.Ambar.Controllers
         // GET: api/Schema
         public Collection Get(string scope)
         {
-            var items = MemoryContext.Default.GetSet<EntryType>();
+            var items = this.documents.Find<EntryType>();
             var collection = new Collection { Type = "Array", Limit = 25, Skip = 0 };
             collection.Items.AddRange(items);
             return collection;
