@@ -11,8 +11,8 @@ namespace Yekzen.Web.Bootstrap
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.extension.js",
-                        "~/Scripts/sammy-{version}.js",
-                        "~/Scripts/underscore.js"));
+                        "~/Scripts/underscore.js",
+                        "~/Scripts/backbone.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
