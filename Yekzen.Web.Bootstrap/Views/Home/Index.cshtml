@@ -2,61 +2,40 @@
     ViewBag.Title = "Home Page";
 }
 
-
 <div class="row">
-    <div class="col-md-12 main-content">
-    </div>
+    <div class="col-md-12">
+        <div class="yz-section">
+            <h1 class="page-header">Scopes</h1>
+            <div class="yz-callout yz-callout-info">
+                <h4>Alternate elements</h4>
+                <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+            </div>
 
-    <div class="col-md-12 main-data">
+            <div class="panel panel-default">
+                <div class="panel-heading">Scope List</div>
+                <div class="panel-body  yz-container">
+                    <p> List of Scopes. </p>
+                </div>
+
+                <!-- List group -->
+                <ul class="list-group list-scope"></ul>
+            </div>
+        </div>
     </div>
 </div>
 
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Check me out
-        </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
 @section scripts
 {
-    <script id="form_input" type="x-tmpl-mustache">
-        <form>
-            <% $.each(Fields.Items.Items, function (index, item) {
-                if(item.Fields.InputType == 'submit') {%>
-            <button type="<%=item.Fields.InputType%>" class="btn btn-default"><%=item.Fields.Title%></button>
-            <% } else {%>
-            <div class="form-group">
-                <label for="input<%=item.Fields.InputType%>"><%=item.Fields.Title%></label>
-                <input type="<%=item.Fields.InputType%>" class="form-control" id="input<%=item.Fields.InputType%>" placeholder="<%=item.Fields.InputType%>">
-            </div>
-            <% } }); %>
-        </form>
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $.getJSON("/Home/Data", null, function (data) {
-
-                $('.main-data').html(JSON.stringify(data));
-                var template = _.template($('#form_input').html());
-                $('.main-content').append(template(data));
-            });
-        });
-    </script>
+<script id="item-template" type="text/template">
+    <li class="list-group-item" data-id="<%= Id %>">
+        <div class="btn-group" role="group">
+            <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-list"></i></button>
+            <button class="btn btn-sm btn-danger btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+        </div>
+        <span>
+            <%= Name %>
+        </span>
+    </li>
+</script>
 }

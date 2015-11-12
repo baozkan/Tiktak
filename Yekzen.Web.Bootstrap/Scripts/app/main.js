@@ -1,19 +1,18 @@
 ﻿// initialize the application
-var app = Sammy('#main', function () {
-
-    // include a plugin
-    this.use('Mustache');
-
-    // define a 'route'
-    this.get('#/', function () {
-        // load some data
-        this.load('http://localhost:19912/api/scopes')
-            // render a template
-            .renderEach('post.mustache')
-            // swap the DOM with the new content
-            .swap();
-    });
+require.config({
+    //urlArgs: "bust=" + (new Date()).getTime(),
+    paths: {
+        jquery: '../jquery-2.1.4',
+        bootstrap: '../bootstrap',
+        underscore: '../underscore',
+        backbone: '../backbone',
+        templates: '../../templates'
+    }
 });
 
-// start the application
-app.run('#/');
+// Load our app module and pass it to our definition function
+require(['app',], function (main) {
+    // The "app" dependency is passed in as "main"
+    // Again, the other dependencies passed in are not "AMD" therefore don't pass a parameter to this function
+    main.initialize();
+});

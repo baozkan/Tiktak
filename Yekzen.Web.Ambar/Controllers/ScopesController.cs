@@ -41,12 +41,17 @@ namespace Yekzen.Web.Ambar.Controllers
         // POST: api/Scopes
         public void Post([FromBody]Scope value)
         {
+            value.Type = "Scope";
+            value.Version = 1;
+            value.CreatedAt = DateTime.Now;
+            value.UpdatedAt = DateTime.Now;
             documents.Insert<Scope>(value);
         }
 
         // PUT: api/Scopes/5
         public void Put(string id, [FromBody]Scope value)
         {
+            value.UpdatedAt = DateTime.Now;
             documents.Update<Scope>(p => p.Id == id, value);
         }
 

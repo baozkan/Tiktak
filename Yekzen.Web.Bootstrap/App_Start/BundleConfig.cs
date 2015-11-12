@@ -8,6 +8,7 @@ namespace Yekzen.Web.Bootstrap
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.extension.js",
@@ -26,10 +27,8 @@ namespace Yekzen.Web.Bootstrap
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                      "~/Scripts/app/main.js",
-                      "~/Scripts/app/router.js",
-                      "~/Scripts/app/app.js"));
+            bundles.Add(new ScriptBundle("~/bundles/require").Include(
+                      "~/Scripts/require.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
