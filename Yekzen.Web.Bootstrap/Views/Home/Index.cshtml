@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
+<div class="row app-main">
     <div class="col-md-12">
         <div class="yz-section">
             <h1 class="page-header">Scopes</h1>
@@ -11,14 +11,14 @@
                 <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-scopes">
                 <div class="panel-heading">Scope List</div>
                 <div class="panel-body  yz-container">
                     <p> List of Scopes. </p>
+                    <button class="btn btn-sm btn-primary btn-add" type="button"><i class="glyphicon glyphicon-plus"></i> Yeni Ekle</button>
                 </div>
-
                 <!-- List group -->
-                <ul class="list-group list-scope"></ul>
+                <ul class="list-group"></ul>
             </div>
         </div>
     </div>
@@ -26,16 +26,18 @@
 
 @section scripts
 {
-<script id="item-template" type="text/template">
-    <li class="list-group-item" data-id="<%= Id %>">
-        <div class="btn-group" role="group">
-            <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-pencil"></i></button>
-            <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-list"></i></button>
-            <button class="btn btn-sm btn-danger btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-        </div>
-        <span>
-            <%= Name %>
-        </span>
-    </li>
-</script>
+    <script id="scopes-template" type="text/template">
+
+        <% _.each(scopes, function(scope){ %>
+        <li class="list-group-item" data-id="<%=scope.id%>">
+            <div class="btn-group" role="group">
+                <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-list"></i></button>
+                <button class="btn btn-sm btn-danger btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+            <span><%=scope.get("Name")%></span>
+        </li>
+        <% }); %>
+
+    </script>
 }

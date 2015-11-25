@@ -4,30 +4,13 @@
   'backbone'
 ], function ($, _, Backbone) {
 
-    var Scope = Backbone.Model.extend({
-        idAttribute: "Id"
-    });
-
-    var Scopes = Backbone.Collection.extend({
-        model : Scope,
-        url: "http://localhost:19912/api/scopes",
-        parse: function (data) {
-            return data.Items;
-        }
-    });
-
-    var ScopeView = Backbone.View.extend({
-        template: _.template($('#item-template').html()),
-        render: function () {
-            this.el = this.template(this.model.toJSON());
-            return this;
-        }
-    });
-
     var AppView = Backbone.View.extend({
         // el - stands for element. Every view has a element associate in with HTML
         //      content will be rendered.
-        el: '.list-scope',
+        el: '.app-main',
+        events: {
+            'click button': 'show'
+        },
         // template which has the placeholder 'who' to be substitute later
         template: _.template($('#item-template').html()),
 
@@ -60,6 +43,9 @@
             });
             view.render();
             this.$el.append(view.el);
+        },
+        show: function () {
+            alert('Hello world!');
         }
     });
 

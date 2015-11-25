@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="yz-section">
+            <h1 class="page-header">Scopes</h1>
+            <div class="yz-callout yz-callout-info">
+                <h4>Alternate elements</h4>
+                <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">New Scope</div>
+                <div class="panel-body new-scope">
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Scope List</div>
+                <div class="panel-body">
+                    <p> List of Scopes. </p>
+                </div>
+
+                <!-- List group -->
+                <ul class="list-group list-scope"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script id="form_input" type="text/template">
+        <form>
+            <% $.each(Fields.Items.Items, function (index, item) {
+            if(item.Fields.InputType == 'submit') {%>
+            <button type="<%=item.Fields.InputType%>" class="btn btn-default"><%=item.Fields.Title%></button>
+            <% } else {%>
+            <div class="form-group">
+                <label for="input<%=item.Fields.InputType%>"><%=item.Fields.Title%></label>
+                <input type="<%=item.Fields.InputType%>" name="<%=item.Fields.InputType%>" class="form-control" id="input<%=item.Fields.InputType%>" placeholder="<%=item.Fields.InputType%>">
+            </div>
+            <% } }); %>
+        </form>
+    </script>
+
+    <script id="ltScore" type="text/template">
+        <% $.each(Items, function (index, item) { %>
+        <li class="list-group-item" data-id="<%=item.Id%>">
+            <div class="btn-group" role="group">
+                <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-list"></i></button>
+                <button class="btn btn-sm btn-danger btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+            <span>
+                <%=item.Name%>
+            </span>
+        </li>
+        <% }); %>
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var loadList = function () {
+                $('.list-scope').html('');
+                $.get('http://localhost:19912/api/scopes', null, function (data) {
+                    var template = _.template($('#ltScore').html());
+                    $('.list-scope').append(template(data));
+                });
+            };
+            loadList();
+
+            $.getJSON("/Scope/Data", null, function (data) {
+                var template = _.template($('#form_input').html());
+                $('.new-scope').append(template(data));
+
+                $('form').submit(function (e) {
+                    var self = this;
+                    $.post('http://localhost:19912/api/scopes', $(this).serialize(), function (data) {
+                        loadList();
+                        self.reset();
+                    });
+                    event.preventDefault();
+                });
+            });
+
+            $(".list-scope").on("click", ".btn-remove", function () {
+                var self = $(this);
+                $.delete('http://localhost:19912/api/scopes/' + self.parents("li").attr("data-id"), null, function (data) {
+                    loadList();
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
+}
