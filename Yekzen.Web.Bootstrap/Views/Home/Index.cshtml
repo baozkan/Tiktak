@@ -12,13 +12,6 @@
             </div>
 
             <div class="panel panel-default panel-scopes">
-                <div class="panel-heading">Scope List</div>
-                <div class="panel-body  yz-container">
-                    <p> List of Scopes. </p>
-                    <button class="btn btn-sm btn-primary btn-add" type="button"><i class="glyphicon glyphicon-plus"></i> Yeni Ekle</button>
-                </div>
-                <!-- List group -->
-                <ul class="list-group"></ul>
             </div>
         </div>
     </div>
@@ -27,17 +20,29 @@
 @section scripts
 {
     <script id="scopes-template" type="text/template">
-
-        <% _.each(scopes, function(scope){ %>
-        <li class="list-group-item" data-id="<%=scope.id%>">
-            <div class="btn-group" role="group">
-                <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-pencil"></i></button>
-                <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-list"></i></button>
-                <button class="btn btn-sm btn-danger btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-            </div>
-            <span><%=scope.get("Name")%></span>
-        </li>
-        <% }); %>
-
+        <div class="panel-heading">Scope List</div>
+        <div class="panel-body  yz-container">
+            <button class="btn btn-sm btn-primary btn-add" type="button"><i class="glyphicon glyphicon-plus"></i> Yeni Ekle</button>
+            <form class="form-inline form-edit-scope" style="display:none">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="scopeName" name="Name" placeholder="Name">
+                </div>
+                <button type="button" class="btn btn-primary btn-save">Save</button>
+                <button type="button" class="btn btn-default btn-cancel">Cancel</button>
+            </form>
+        </div>
+        <!-- List group -->
+        <ul class="list-group">
+            <% _.each(scopes, function(scope){ %>
+            <li class="list-group-item" data-id="<%=scope.id%>">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-pencil"></i></button>
+                    <button class="btn btn-sm btn-default btn-edit" type="button"><i class="glyphicon glyphicon-list"></i></button>
+                    <button class="btn btn-sm btn-danger btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+                <span><%=scope.get("Name")%></span>
+            </li>
+            <% }); %>
+        </ul>
     </script>
 }

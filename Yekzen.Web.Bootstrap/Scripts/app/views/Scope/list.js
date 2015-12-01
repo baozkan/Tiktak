@@ -4,14 +4,17 @@
   'underscore', // lib/underscore/underscore
   'backbone',    // lib/backbone/backbone
   'collections/scopes',
-], function ($, _, Backbone,ScopeCollection) {
-    
+], function ($, _, Backbone, ScopeCollection) {
+
     var ScopeListView = Backbone.View.extend({
-        el: $(".panel-scopes ul.list-group"),
+        el: $(".panel-scopes"),
+        editShown: false,
         template: _.template($('#scopes-template').html()),
         // The DOM events specific to an item.
         events: {
-            "click .btn-edit": "select",
+            "click .btn-add": "toggleContent",
+            "click .btn-cancel": "toggleContent",
+            "click .btn-save": "save"
         },
         initialize: function () {
             this.collection = new ScopeCollection();
@@ -24,13 +27,33 @@
                 scopes: this.collection.models,
                 _: _
             };
-            
+
             this.$el.html(this.template(data));
         },
 
-        select: function () {
-            alert('ok');
+        toggleContent: function () {
+            if (this.editShown === false) {
+                this.showEdit();
+            } else {
+                this.hideEdit();
+            }
+        },
+        hideEdit: function () {
+            this.$el.find('form.form-edit-scope').hide();
+            this.$el.find('.btn-add').show();
+            this.editShown = false;
+        },
+        showEdit: function () {
+            this.$el.find('form.form-edit-scope').show();
+            this.$el.find('.btn-add').hide();
+            this.editShown = true;
+        },
+        save: function (e) {
+            e.preventDefault();
+            var scope = this.$el.find('form.form-edit-scope').serializeObject()
+            this.collection.create(scope);
+            this.hideEdit();
         }
-});
-return ScopeListView;
+    });
+    return ScopeListView;
 });
